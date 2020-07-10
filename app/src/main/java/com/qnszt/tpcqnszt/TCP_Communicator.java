@@ -56,11 +56,11 @@ class TCPCommunicator {
         return TCPWriterErrors.OK;
 //		}
     }
-    public static  TCPWriterErrors writeToSocket(String obj)
+    public static TCPWriterErrors writeToSocket(String obj)
     {
         try
         {
-            out.write(obj + System.getProperty("line.separator"));
+            out.write(obj);
             out.flush();
         }
         catch(Exception e)

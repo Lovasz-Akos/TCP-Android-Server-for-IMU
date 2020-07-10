@@ -90,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                     Log.d("TAG", "run: " + theMessage);
                     JSONObject xd = new JSONObject();
                     xd.put("xd", "lmao");
-                    //writer.writeToSocket("Szia tibi :)");
+
+                    writer.writeToSocket("Szia tibi :)");
                 }
                 catch(Exception e)
                 {
