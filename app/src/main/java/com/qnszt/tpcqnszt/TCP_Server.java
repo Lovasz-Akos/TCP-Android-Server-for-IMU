@@ -26,7 +26,7 @@ public class TCP_Server{
 
     private TextView text;
 
-    public static int SERVERPORT = 6000;
+    public static int SERVERPORT = 1883;
 
     public void server_start() {
 
