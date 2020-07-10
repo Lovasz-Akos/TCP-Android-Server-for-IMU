@@ -1,23 +1,32 @@
 package com.qnszt.tpcqnszt;
 
-import android.os.AsyncTask;
+import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.qnszt.tpcqnszt.szerverstuff.EnumsAndStatics;
+import com.qnszt.tpcqnszt.szerverstuff.OnTCPMessageRecievedListener;
+
+import com.qnszt.tpcqnszt.TCPCommunicator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONObject;
 
-    TCP_Client tcp;
+public class MainActivity extends AppCompatActivity implements OnTCPMessageRecievedListener {
+
+    private static Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
+
+        TCPCommunicator writer =TCPCommunicator.getInstance();
+        TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
+        writer.init(1500);
     }
 
     @Override
@@ -58,32 +71,60 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class ConnectTask extends AsyncTask<String, String, TCP_Client> {
+    @Override
+    public void onTCPMessageRecieved(String message) {
+        // TODO Auto-generated method stub
+        final String theMessage=message;
+        handler.post(new Runnable() {
 
-        @Override
-        protected TCP_Client doInBackground(String... message) {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                try
+                {
+                    //EditText editTxt = (EditText)findViewById(R.id.majd ide jöhet egy label vagy valami");
+                    //editTxt.setText(theMessage);
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
 
-            //we create a TCPClient object
-            tcp = new TCP_Client(new TCP_Client.OnMessageReceived() {
+
+    }
+
+    public void someButtonClicked(View view)
+    {
+        JSONObject obj = new JSONObject();
+        try
+        {
+            if(view.getId()==R.id.küldésgomb jön ide)
+            {
+
+                obj.put(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON, EnumsAndStatics.MessageTypes.MessageFromServer);
+                EditText txtContent = (EditText)findViewById(R.id.majd nemtom hogy interface-rol megy e az uzenet);
+                obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
+            }
+
+            final JSONObject thingReadyForSend=obj;
+            Thread thread = new Thread(new Runnable() {
+
                 @Override
-                //here the messageReceived method is implemented
-                public void messageReceived(String message) {
-                    //this method calls the onProgressUpdate
-                    publishProgress(message);
+                public void run() {
+                    // TODO Auto-generated method stub
+                    TCPCommunicator.writeToSocket(thingReadyForSend);
                 }
             });
-            tcp.run();
-
-            return null;
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-            //response received from server
-            Log.d("test", "response " + values[0]);
-            //process server response here....
+            thread.start();
 
         }
+        catch(Exception e)
+        {
+
+        }
+
     }
+
 }
