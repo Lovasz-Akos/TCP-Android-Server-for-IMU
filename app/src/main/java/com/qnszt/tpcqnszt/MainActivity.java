@@ -101,11 +101,11 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         JSONObject obj = new JSONObject();
         try
         {
-            if(view.getId()==R.id.küldésgomb jön ide)
+            if(view.getId()==R.id.btn_startMeasurement)
             {
 
                 obj.put(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON, EnumsAndStatics.MessageTypes.MessageFromServer);
-                EditText txtContent = (EditText)findViewById(R.id.majd nemtom hogy interface-rol megy e az uzenet);
+                EditText txtContent = (EditText)findViewById(R.id.txt_measurementName);
                 obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
             }
 
