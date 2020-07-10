@@ -20,14 +20,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.qnszt.tpcqnszt.models.Measurement;
+import com.qnszt.tpcqnszt.models.TCP_Server;
 
 import org.json.JSONObject;
 
 import java.io.PrintWriter;
 
-public class MainActivity extends AppCompatActivity implements OnTCPMessageRecievedListener {
+public class MainActivity extends AppCompatActivity{
 
-    static TCPCommunicator writer =TCPCommunicator.getInstance();
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
@@ -40,21 +40,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       /* FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
-
-
+        TCP_Server.SERVERPORT = 1883;
+        new TCP_Server().server_start();
         MainActivity.mainActivity = this;
-        TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
-
-        new StartServer().execute();
 
     }
 
@@ -94,97 +82,4 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
 
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onTCPMessageRecieved(final String message){
-        // TODO Auto-generated method stub
-
-        handler.post(new Runnable() {
-
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                try
-                {
-                    String theMessage = message.toString();
-                    TextView msgRecieved = findViewById(R.id.lbl_status);
-                    msgRecieved.setText(theMessage.toString());
-                    Log.d("Message Recieved", theMessage.toString());
-                    new SendMsg("pls work malayan").execute();
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
-            }
-
-        });
-
-
-    }
-
-    private static class SendMsg extends AsyncTask<Void, Void, Void>{
-
-        String message;
-
-        public SendMsg(String msg)
-        {
-            this.message = msg;
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            TCPCommunicator.writeToSocket(message);
-            Log.d("TAG", "doInBackground: sent message to client");
-            return null;
-        }
-    }
-
-    private static class StartServer extends AsyncTask<Void, Void, Void>{
-        public StartServer(){
-
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-
-            writer.init(1883);
-            return null;
-        }
-
-    }
-
-    public void someButtonClicked(View view)
-    {
-        JSONObject obj = new JSONObject();
-        try
-        {
-            if(view.getId()==R.id.btn_startMeasurement)
-            {
-                obj.put(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON, EnumsAndStatics.MessageTypes.MessageFromServer);
-                TextView txtContent = findViewById(R.id.lbl_status);
-                obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
-            }
-
-            final JSONObject jsonReadyForSend=obj;
-            Thread thread = new Thread(new Runnable() {
-
-                @Override
-                public void run() {
-                    // TODO Auto-generated method stub
-                    TCPCommunicator.writeToSocket(jsonReadyForSend.toString());
-                }
-            });
-            thread.start();
-
-        }
-        catch(Exception e)
-        {
-
-        }
-
-    }
-
-
-
 }
