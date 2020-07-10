@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*FloatingActionButton fab = findViewById(R.id.fab);
+       /* FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                         .setAction("Action", null).show();
             }
         });
-
+        */
+       
         TCPCommunicator writer =TCPCommunicator.getInstance();
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
         writer.init(1500);
