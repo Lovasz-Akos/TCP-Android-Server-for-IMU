@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
     }
 
     @Override
-    public void onTCPMessageRecieved(String message) {
+    public void onTCPMessageRecieved(String message){
         // TODO Auto-generated method stub
-        final String theMessage=message;
+        final Object theMessage = message;
         handler.post(new Runnable() {
 
             @Override
@@ -86,12 +86,10 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 try
                 {
                     TextView msgRecieved = findViewById(R.id.lbl_status);
-                    msgRecieved.setText(theMessage);
-                    Log.d("TAG", "run: " + theMessage);
-                    JSONObject xd = new JSONObject();
-                    xd.put("xd", "lmao");
+                    msgRecieved.setText((Integer) theMessage);
+                    Log.d("Message Recieved", "run: " + theMessage);
 
-                    writer.writeToSocket("Szia tibi :)");
+                    TCPCommunicator.writeToSocket((JSONObject) theMessage);
                 }
                 catch(Exception e)
                 {
@@ -105,29 +103,23 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
 
     public void someButtonClicked(View view)
     {
-
         JSONObject obj = new JSONObject();
         try
         {
             if(view.getId()==R.id.btn_startMeasurement)
             {
-
                 obj.put(EnumsAndStatics.MESSAGE_TYPE_FOR_JSON, EnumsAndStatics.MessageTypes.MessageFromServer);
-                EditText txtContent = (EditText)findViewById(R.id.txt_measurementName);
+                TextView txtContent = findViewById(R.id.lbl_status);
                 obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
             }
 
-            final String thingReadyForSend = obj.toString();
+            final JSONObject jsonReadyForSend=obj;
             Thread thread = new Thread(new Runnable() {
 
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
-                    TCPCommunicator.writeToSocket(thingReadyForSend);
-                    TCPCommunicator.writeToSocket("XDXDXD");
-                    Log.d("TAG", "onClick: clicked the thing :)");
-                    TextView msgRecieved = findViewById(R.id.lbl_status);
-                    msgRecieved.setText("XDXD");
+                    TCPCommunicator.writeToSocket(jsonReadyForSend);
                 }
             });
             thread.start();
@@ -135,8 +127,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         }
         catch(Exception e)
         {
-            Log.d("TAG", "someButtonClicked: " + e.getMessage());
+
         }
+
     }
 
 

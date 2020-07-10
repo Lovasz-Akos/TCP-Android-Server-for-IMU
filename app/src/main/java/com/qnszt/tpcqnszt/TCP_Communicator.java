@@ -56,7 +56,7 @@ class TCPCommunicator {
         return TCPWriterErrors.OK;
 //		}
     }
-    public static TCPWriterErrors writeToSocket(String obj)
+    public static TCPWriterErrors writeToSocket(JSONObject obj)
     {
         try
         {
