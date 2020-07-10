@@ -11,6 +11,7 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -18,7 +19,11 @@ import com.qnszt.tpcqnszt.models.Measurement;
 
 import org.json.JSONObject;
 
+import java.io.PrintWriter;
+
 public class MainActivity extends AppCompatActivity implements OnTCPMessageRecievedListener {
+
+    TCPCommunicator writer =TCPCommunicator.getInstance();
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
@@ -40,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         });
         */
 
-        TCPCommunicator writer =TCPCommunicator.getInstance();
+
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
 
         writer.init(1883);
@@ -83,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                     TextView msgRecieved = findViewById(R.id.lbl_status);
                     msgRecieved.setText(theMessage);
                     Log.d("TAG", "run: " + theMessage);
+                    JSONObject xd = new JSONObject();
+                    xd.put("xd", "lmao");
+                    //writer.writeToSocket("Szia tibi :)");
                 }
                 catch(Exception e)
                 {
@@ -107,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
             }
 
-            final JSONObject thingReadyForSend=obj;
+            final String thingReadyForSend= "xd";
             Thread thread = new Thread(new Runnable() {
 
                 @Override
