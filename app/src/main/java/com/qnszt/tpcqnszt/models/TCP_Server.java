@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -84,9 +85,13 @@ public class TCP_Server{
 
             try {
 
-                this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-                Log.d("TAG", "CommunicationThread: "+this.input.readLine());
                 this.output = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));
+                output.flush();
+                this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
+
+                this.clientSocket.setSoTimeout(10);
+                Log.d("TAG", "CommunicationThread: "+this.input.readLine());
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -103,8 +108,11 @@ public class TCP_Server{
 
                     updateConversationHandler.post(new updateUIThread(read));
 
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    output.write(":)");
+                    output.flush();
+
+                } catch (Exception s) {
+                    //s.printStackTrace();
                 }
             }
         }

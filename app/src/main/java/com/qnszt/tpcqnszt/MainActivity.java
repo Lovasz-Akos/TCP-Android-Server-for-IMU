@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void MUKODJ(){
+    public void startMeasurementClicked(){
         Measurement measurement = new Measurement();
         measurement.setName(((TextView)findViewById(R.id.txt_measurementName)).getText().toString());
         measurement.setDuration(((TextView)findViewById(R.id.txt_measurementDuration)).getText().toString());

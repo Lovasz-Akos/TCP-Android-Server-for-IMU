@@ -1,20 +1,12 @@
 package com.qnszt.tpcqnszt;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.AndroidViewModel;
-import androidx.navigation.fragment.NavHostFragment;
-
-import com.qnszt.tpcqnszt.models.Measurement;
 
 public class FirstFragment extends Fragment {
 
@@ -33,7 +25,7 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.btn_startMeasurement).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.mainActivity.MUKODJ();
+                MainActivity.mainActivity.startMeasurementClicked();
             }
         });
 
