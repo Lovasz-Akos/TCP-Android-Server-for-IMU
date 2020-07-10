@@ -1,7 +1,9 @@
 package com.qnszt.tpcqnszt.models;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -74,6 +76,7 @@ public class TCP_Server{
         private Socket clientSocket;
 
         private BufferedReader input;
+        private BufferedWriter output;
 
         public CommunicationThread(Socket clientSocket) {
 
@@ -83,6 +86,7 @@ public class TCP_Server{
 
                 this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
                 Log.d("TAG", "CommunicationThread: "+this.input.readLine());
+                this.output = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -117,7 +121,7 @@ public class TCP_Server{
         @Override
         public void run() {
            // text.setText(text.getText().toString()+"Client Says: "+ msg + "\n");
-            if (msg.contains("null") != true)
+            if (msg != null)
             Log.d("TAG", "run: "+msg);
         }
     }
