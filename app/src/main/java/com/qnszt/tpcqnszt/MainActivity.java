@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
+import android.util.StateSet;
 import android.view.View;
 
 import android.view.Menu;
@@ -26,7 +27,7 @@ import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity implements OnTCPMessageRecievedListener {
 
-    TCPCommunicator writer =TCPCommunicator.getInstance();
+    static TCPCommunicator writer =TCPCommunicator.getInstance();
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
@@ -49,10 +50,11 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         });
         */
 
+
         MainActivity.mainActivity = this;
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
 
-        writer.init(1883);
+        new StartServer().execute();
 
     }
 
@@ -136,6 +138,20 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
             Log.d("TAG", "doInBackground: sent message to client");
             return null;
         }
+    }
+
+    private static class StartServer extends AsyncTask<Void, Void, Void>{
+        public StartServer(){
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            writer.init(1883);
+            return null;
+        }
+
     }
 
     public void someButtonClicked(View view)

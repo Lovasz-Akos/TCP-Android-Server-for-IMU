@@ -85,6 +85,28 @@ class TCPCommunicator {
         TCPCommunicator.serverPort = serverPort;
     }
 
+    public class GetListenerOrSmtn extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            String incomingMsg = "smtn";
+            try{
+            while ((incomingMsg = in.readLine()) != null) {
+                final String finalMessage = incomingMsg;
+                handler.post(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        // TODO Auto-generated method stub
+                        for (OnTCPMessageRecievedListener listener : allListeners)
+                            listener.onTCPMessageRecieved(finalMessage);
+                        Log.e("TCP", finalMessage);
+                    }
+                });
+            }}
+            catch (IOException e){e.printStackTrace();}
+            return null;
+        }
+    }
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void>
     {
@@ -106,19 +128,8 @@ class TCPCommunicator {
                 out = new BufferedWriter(new OutputStreamWriter(outputStream));
                 //receive a message
                 String incomingMsg;
-                while ((incomingMsg = in.readLine()) != null) {
-                    final String finalMessage = incomingMsg;
-                    handler.post(new Runnable() {
+                new GetListenerOrSmtn().execute();
 
-                        @Override
-                        public void run() {
-                            // TODO Auto-generated method stub
-                            for (OnTCPMessageRecievedListener listener : allListeners)
-                                listener.onTCPMessageRecieved(finalMessage);
-                            Log.e("TCP", finalMessage);
-                        }
-                    });
-                }
             }
             catch (IOException e){
                 // TODO Auto-generated catch block
