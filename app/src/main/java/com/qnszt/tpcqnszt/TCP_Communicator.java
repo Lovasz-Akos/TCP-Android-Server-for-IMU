@@ -62,15 +62,13 @@ class TCPCommunicator {
 
     public static TCPWriterErrors writeToSocket(Object obj){
         try {
-            for (int i = 0; i <= 100; i++){
-                out.write(obj.toString());
-                out.newLine();
+
+                out.write(":)");
+                //out.newLine();
                 Log.d("TAG ", "writeToSocket: write success");
                 out.flush();
-            }
+
         } catch (Exception e) {
-            Log.d("TAG", "writeToSocket: failed write");
-            e.printStackTrace();
         }
         return TCPWriterErrors.OK;
     }
@@ -84,29 +82,7 @@ class TCPCommunicator {
     public static void setServerPort(int serverPort) {
         TCPCommunicator.serverPort = serverPort;
     }
-
-    public class GetListenerOrSmtn extends AsyncTask<Void, Void, Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            String incomingMsg = "smtn";
-            try{
-            while ((incomingMsg = in.readLine()) != null) {
-                final String finalMessage = incomingMsg;
-                handler.post(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        // TODO Auto-generated method stub
-                        for (OnTCPMessageRecievedListener listener : allListeners)
-                            listener.onTCPMessageRecieved(finalMessage);
-                        Log.e("TCP", finalMessage);
-                    }
-                });
-            }}
-            catch (IOException e){e.printStackTrace();}
-            return null;
-        }
-    }
+    
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void>
     {
@@ -128,7 +104,19 @@ class TCPCommunicator {
                 out = new BufferedWriter(new OutputStreamWriter(outputStream));
                 //receive a message
                 String incomingMsg;
-                new GetListenerOrSmtn().execute();
+                while ((incomingMsg = in.readLine()) != null) {
+                    final String finalMessage = incomingMsg;
+                    handler.post(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            // TODO Auto-generated method stub
+                            for (OnTCPMessageRecievedListener listener : allListeners)
+                                listener.onTCPMessageRecieved(finalMessage);
+                            Log.e("TCP", finalMessage);
+                        }
+                    });
+                }
 
             }
             catch (IOException e){
