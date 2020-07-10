@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                     TextView msgRecieved = findViewById(R.id.lbl_status);
                     msgRecieved.setText(theMessage.toString());
                     Log.d("Message Recieved", theMessage.toString());
-                    new SendMsg("pls work maaaaan").execute();
+                    new SendMsg("pls work malayan").execute();
                 }
                 catch(Exception e)
                 {

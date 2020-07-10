@@ -82,7 +82,7 @@ class TCPCommunicator {
     public static void setServerPort(int serverPort) {
         TCPCommunicator.serverPort = serverPort;
     }
-    
+
 
     public class InitTCPServerTask extends AsyncTask<Void, Void, Void>
     {
