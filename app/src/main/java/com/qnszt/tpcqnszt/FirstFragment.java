@@ -33,6 +33,7 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.btn_startMeasurement).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< Updated upstream
                 Measurement measurement = new Measurement();
                // measurement.setName(((TextView)view.findViewById(R.id.txt_measurementName)).getText().toString());
 /*                measurement.setDuration(((TextView)view.findViewById(R.id.txt_measurementDuration)).getText().toString());
@@ -40,6 +41,9 @@ public class FirstFragment extends Fragment {
                 measurement.setDelay(selected.getText() == "50hz" ? 20 : 10); //TODO: Add more freq options
                 MainActivity.measurement = measurement;
   */              //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
+=======
+                MainActivity.mainActivity.MUKODJ();
+>>>>>>> Stashed changes
             }
         });
 

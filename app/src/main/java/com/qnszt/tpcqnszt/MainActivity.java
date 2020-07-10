@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.qnszt.tpcqnszt.models.Measurement;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
+    public static MainActivity mainActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +48,26 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         });
         */
 
-
+        MainActivity.mainActivity = this;
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
 
         writer.init(1883);
 
+    }
+
+    public void MUKODJ(){
+        Measurement measurement = new Measurement();
+        measurement.setName(((TextView)findViewById(R.id.txt_measurementName)).getText().toString());
+        measurement.setDuration(((TextView)findViewById(R.id.txt_measurementDuration)).getText().toString());
+        RadioButton selected = findViewById(((RadioGroup) findViewById(R.id.rdg_frequency)).getCheckedRadioButtonId());
+        try{
+            measurement.setDelay(selected.getText() == "50hz" ? 20 : 10); //TODO: Add more freq options
+        }catch (Exception e){
+
+        }
+        MainActivity.measurement = measurement;
+        Log.d("ye", "EEEEEEEEEEEEEEEEEEEEEEEEE");
+        //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
     @Override
