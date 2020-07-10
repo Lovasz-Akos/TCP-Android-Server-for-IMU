@@ -27,7 +27,7 @@
                 android:textAlignment="textEnd" />
 
             <EditText
-                android:id="@+id/txtmeasurementName"
+                android:id="@+id/txt_measurementName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
