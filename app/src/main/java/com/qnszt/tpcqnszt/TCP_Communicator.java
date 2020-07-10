@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-import com.qnszt.tpcqnszt.szerverstuff.OnTCPMessageRecievedListener;
-
 import org.json.JSONObject;
 
 import java.io.BufferedReader;

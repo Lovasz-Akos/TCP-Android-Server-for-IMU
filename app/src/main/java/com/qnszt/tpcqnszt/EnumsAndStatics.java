@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt.szerverstuff;
+package com.qnszt.tpcqnszt;
 
 public class EnumsAndStatics {
     public enum MessageTypes{MessageFromServer,MessageFromClient,REGISTRATION_APPROVED}
