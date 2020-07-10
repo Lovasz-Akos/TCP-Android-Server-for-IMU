@@ -27,6 +27,7 @@ class TCPCommunicator {
     private static ServerSocket ss;
     private static Socket s;
 
+
     private static BufferedReader in;
     private static BufferedWriter out;
     private static OutputStream outputStream;
@@ -55,11 +56,11 @@ class TCPCommunicator {
         return TCPWriterErrors.OK;
 //		}
     }
-    public static  TCPWriterErrors writeToSocket(JSONObject obj)
+    public static  TCPWriterErrors writeToSocket(String obj)
     {
         try
         {
-            out.write(obj.toString() + System.getProperty("line.separator"));
+            out.write(obj + System.getProperty("line.separator"));
             out.flush();
         }
         catch(Exception e)
