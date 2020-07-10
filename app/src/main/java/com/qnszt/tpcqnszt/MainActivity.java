@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
 
     public void someButtonClicked(View view)
     {
+
         JSONObject obj = new JSONObject();
         try
         {
@@ -115,13 +116,17 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 obj.put(EnumsAndStatics.MESSAGE_CONTENT_FOR_JSON, txtContent.getText().toString());
             }
 
-            final String thingReadyForSend= "xd";
+            final String thingReadyForSend = obj.toString();
             Thread thread = new Thread(new Runnable() {
 
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
                     TCPCommunicator.writeToSocket(thingReadyForSend);
+                    TCPCommunicator.writeToSocket("XDXDXD");
+                    Log.d("TAG", "onClick: clicked the thing :)");
+                    TextView msgRecieved = findViewById(R.id.lbl_status);
+                    msgRecieved.setText("XDXD");
                 }
             });
             thread.start();
@@ -129,9 +134,10 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         }
         catch(Exception e)
         {
-
+            Log.d("TAG", "someButtonClicked: " + e.getMessage());
         }
-
     }
+
+
 
 }

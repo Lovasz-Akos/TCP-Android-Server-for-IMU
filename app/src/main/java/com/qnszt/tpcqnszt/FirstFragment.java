@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.qnszt.tpcqnszt.models.Measurement;
@@ -33,12 +34,12 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Measurement measurement = new Measurement();
-                measurement.setName(((TextView)view.findViewById(R.id.txt_measurementName)).getText().toString());
-                measurement.setDuration(((TextView)view.findViewById(R.id.txt_measurementDuration)).getText().toString());
+               // measurement.setName(((TextView)view.findViewById(R.id.txt_measurementName)).getText().toString());
+/*                measurement.setDuration(((TextView)view.findViewById(R.id.txt_measurementDuration)).getText().toString());
                 RadioButton selected = view.findViewById(((RadioGroup) view.findViewById(R.id.rdg_frequency)).getCheckedRadioButtonId());
                 measurement.setDelay(selected.getText() == "50hz" ? 20 : 10); //TODO: Add more freq options
                 MainActivity.measurement = measurement;
-                //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
+  */              //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
             }
         });
 
@@ -46,9 +47,13 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //TODO: TCP.send("<LED1>");
+
+
             }
         });
     }
+
+
 
     
 }
