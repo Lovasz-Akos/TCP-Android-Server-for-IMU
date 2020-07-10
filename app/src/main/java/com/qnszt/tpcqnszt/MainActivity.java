@@ -44,10 +44,11 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
             }
         });
         */
-       
+
         TCPCommunicator writer =TCPCommunicator.getInstance();
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
-        writer.init(1500);
+
+        writer.init(1883);
     }
 
     @Override
