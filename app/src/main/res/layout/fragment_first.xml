@@ -19,13 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mérés neve:"
-                android:textAlignment="textEnd" />
-
             <EditText
                 android:id="@+id/txt_measurementName"
                 android:layout_width="wrap_content"
@@ -169,4 +162,5 @@
         </TableRow>
 
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,26 +1,18 @@
 package com.qnszt.tpcqnszt;
 
-import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.qnszt.tpcqnszt.szerverstuff.EnumsAndStatics;
-import com.qnszt.tpcqnszt.szerverstuff.OnTCPMessageRecievedListener;
-
-import com.qnszt.tpcqnszt.TCPCommunicator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -49,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
         TCPCommunicator.addListener((OnTCPMessageRecievedListener) this);
 
         writer.init(1883);
+
     }
 
     @Override
@@ -84,8 +77,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 // TODO Auto-generated method stub
                 try
                 {
-                    //EditText editTxt = (EditText)findViewById(R.id.majd ide jöhet egy label vagy valami");
-                    //editTxt.setText(theMessage);
+                    TextView msgRecieved = findViewById(R.id.lbl_status);
+                    msgRecieved.setText(theMessage);
+                    Log.d("TAG", "run: " + theMessage);
                 }
                 catch(Exception e)
                 {

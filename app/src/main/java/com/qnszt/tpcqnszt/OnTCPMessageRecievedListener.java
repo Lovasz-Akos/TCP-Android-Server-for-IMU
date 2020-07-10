@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt.szerverstuff;
+package com.qnszt.tpcqnszt;
 
 public interface OnTCPMessageRecievedListener {
     public void onTCPMessageRecieved(String message);
