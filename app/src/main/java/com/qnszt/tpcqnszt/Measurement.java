@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt.models;
+package com.qnszt.tpcqnszt;
 
 public class Measurement {
     String name;

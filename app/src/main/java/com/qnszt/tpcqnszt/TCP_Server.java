@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt.models;
+package com.qnszt.tpcqnszt;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

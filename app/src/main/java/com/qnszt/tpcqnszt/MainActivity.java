@@ -1,6 +1,5 @@
 package com.qnszt.tpcqnszt;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -8,23 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.util.Log;
-import android.util.StateSet;
-import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import com.qnszt.tpcqnszt.models.Measurement;
-import com.qnszt.tpcqnszt.models.TCP_Server;
-
-import org.json.JSONObject;
-
-import java.io.PrintWriter;
 
 public class MainActivity extends AppCompatActivity{
 
