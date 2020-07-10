@@ -12,7 +12,7 @@ import java.net.Socket;
 public class TCP_Client {
 
     public static final String TAG = TCP_Client.class.getSimpleName();
-    public static final String SERVER_IP = "192.168.1.8"; //server IP address
+    public static final String SERVER_IP = "***.***.***.***"; //server IP address
     public static final int SERVER_PORT = 1234;
     // message to send to the server
     private String mServerMessage;

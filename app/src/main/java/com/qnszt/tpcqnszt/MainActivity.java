@@ -1,5 +1,6 @@
 package com.qnszt.tpcqnszt;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -8,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.View;
 
 import android.view.Menu;
@@ -56,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public class ConnectTask extends AsyncTask<String, String, TcpClient> {
+    public class ConnectTask extends AsyncTask<String, String, TCP_Client> {
 
         @Override
-        protected TcpClient doInBackground(String... message) {
+        protected TCP_Client doInBackground(String... message) {
 
             //we create a TCPClient object
-            mTcpClient = new TcpClient(new TcpClient.OnMessageReceived() {
+            tcp = new TCP_Client(new TCP_Client.OnMessageReceived() {
                 @Override
                 //here the messageReceived method is implemented
                 public void messageReceived(String message) {
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     publishProgress(message);
                 }
             });
-            mTcpClient.run();
+            tcp.run();
 
             return null;
         }
