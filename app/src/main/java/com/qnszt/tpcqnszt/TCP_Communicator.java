@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.util.Log;
 
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -56,25 +54,27 @@ class TCPCommunicator {
         return TCPWriterErrors.OK;
 //		}
     }
-    public static TCPWriterErrors writeToSocket(JSONObject obj)
-    {
-        try
-        {
-            out.write(obj);
-            out.flush();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return TCPWriterErrors.OK;
-
-    }
 
     public static void addListener(OnTCPMessageRecievedListener listener)
     {
         allListeners.add(listener);
     }
+
+    public static TCPWriterErrors writeToSocket(Object obj){
+        try {
+            for (int i = 0; i <= 100; i++){
+                out.write(obj.toString());
+                out.newLine();
+                Log.d("TAG ", "writeToSocket: write success");
+                out.flush();
+            }
+        } catch (Exception e) {
+            Log.d("TAG", "writeToSocket: failed write");
+            e.printStackTrace();
+        }
+        return TCPWriterErrors.OK;
+    }
+
 
 
 

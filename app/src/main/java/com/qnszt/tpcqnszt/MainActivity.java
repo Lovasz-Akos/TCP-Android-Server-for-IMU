@@ -1,5 +1,6 @@
 package com.qnszt.tpcqnszt;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -93,9 +94,9 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
     }
 
     @Override
-    public void onTCPMessageRecieved(String message){
+    public void onTCPMessageRecieved(final String message){
         // TODO Auto-generated method stub
-        final Object theMessage = message;
+
         handler.post(new Runnable() {
 
             @Override
@@ -103,20 +104,38 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 // TODO Auto-generated method stub
                 try
                 {
+                    String theMessage = message.toString();
                     TextView msgRecieved = findViewById(R.id.lbl_status);
-                    msgRecieved.setText((Integer) theMessage);
-                    Log.d("Message Recieved", "run: " + theMessage);
-
-                    TCPCommunicator.writeToSocket((JSONObject) theMessage);
+                    msgRecieved.setText(theMessage.toString());
+                    Log.d("Message Recieved", theMessage.toString());
+                    new SendMsg("pls work maaaaan").execute();
                 }
                 catch(Exception e)
                 {
                     e.printStackTrace();
                 }
             }
+
         });
 
 
+    }
+
+    private static class SendMsg extends AsyncTask<Void, Void, Void>{
+
+        String message;
+
+        public SendMsg(String msg)
+        {
+            this.message = msg;
+        }
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            TCPCommunicator.writeToSocket(message);
+            Log.d("TAG", "doInBackground: sent message to client");
+            return null;
+        }
     }
 
     public void someButtonClicked(View view)
@@ -137,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements OnTCPMessageRecie
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
-                    TCPCommunicator.writeToSocket(jsonReadyForSend);
+                    TCPCommunicator.writeToSocket(jsonReadyForSend.toString());
                 }
             });
             thread.start();
