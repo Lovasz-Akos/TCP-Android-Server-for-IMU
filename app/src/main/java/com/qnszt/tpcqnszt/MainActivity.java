@@ -14,11 +14,14 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.qnszt.tpcqnszt.models.Measurement;
+
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity implements OnTCPMessageRecievedListener {
 
     private static Handler handler = new Handler();
+    public static Measurement measurement = new Measurement();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
