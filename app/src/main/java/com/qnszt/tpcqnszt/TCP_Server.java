@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -23,6 +25,8 @@ public class TCP_Server{
     Handler updateConversationHandler;
 
     Thread serverThread = null;
+
+    private static final Pattern regex = Pattern.compile("<(.+)>");
 
     private TextView text;
 
@@ -89,7 +93,7 @@ public class TCP_Server{
                 output.flush();
                 this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
 
-                this.clientSocket.setSoTimeout(10);
+                this.clientSocket.setSoTimeout(10000);
                 Log.d("TAG", "CommunicationThread: "+this.input.readLine());
 
 
@@ -107,9 +111,26 @@ public class TCP_Server{
                     String read = input.readLine();
 
                     updateConversationHandler.post(new updateUIThread(read));
+                    if(read == null || read=="null"){
+                        input.close();
+                        output.close();
+                        Log.d("RUN", "Client disconnected");
+                    }
+                    Log.d("DEBUG", "Message = `" + read + "`");
 
-                    output.write(":)");
-                    output.flush();
+                    Matcher matcher = regex.matcher(read);
+                    if(matcher.find()){
+                        String find = matcher.group(1);
+                        if(find.contains("-CONNECTED")){
+                            ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
+                        }
+                        else if(find.contains("-DISCONNECTED")){
+                            ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
+                        }
+                    }
+
+                    /*output.write(":)");
+                    output.flush();*/
 
                 } catch (Exception s) {
                     //s.printStackTrace();
