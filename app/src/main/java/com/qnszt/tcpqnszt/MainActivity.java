@@ -3,6 +3,7 @@ package com.qnszt.tcpqnszt;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity{
 
         String[] stringArray = messages.toArray(new String[0]);
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, 10, (List<String>) msgList);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_main, (List<String>) msgList);
 
         msgList.setAdapter(adapter);
 
