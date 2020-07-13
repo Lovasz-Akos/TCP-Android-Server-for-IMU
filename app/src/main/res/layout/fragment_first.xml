@@ -7,10 +7,9 @@
     tools:context=".FirstFragment">
 
     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="731dp"
         android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -19,19 +18,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/txt_measurementName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:layout_span="2"
-                android:inputType="textPersonName" />
-
             <TextView
                 android:id="@+id/textTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="Mérés neve" />
+
+            <EditText
+                android:id="@+id/txt_measurementName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
         </TableRow>
 
         <TableRow
@@ -119,8 +119,7 @@
                 android:id="@+id/btn_startMeasurement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="START"
-                ></Button>
+                android:text="START"></Button>
         </TableRow>
 
         <TableRow
@@ -144,7 +143,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Space
                 android:layout_width="wrap_content"
@@ -153,7 +152,7 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/textView11"
