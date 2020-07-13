@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity{
         //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
+    public void getClientMessages(){
+        ClientWorker.getClients();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
