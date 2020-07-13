@@ -23,7 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/measurement_name"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorMainText" />
 
             <EditText
                 android:id="@+id/txt_measurementName"
@@ -31,8 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_span="2"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:importantForAutofill="no" />
+                android:textColor="@color/colorMainText"
+                android:textColorHint="@color/colorAccent2" />
 
         </TableRow>
 
@@ -45,7 +48,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/measurement_duration"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorMainText" />
 
             <EditText
                 android:id="@+id/txt_measurementDuration"
@@ -53,14 +57,16 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:importantForAutofill="no"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textColor="@color/colorMainText"/>
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="@string/minutes" />
+                android:text="@string/minutes"
+                android:textColor="@color/colorMainText"/>
 
         </TableRow>
 
@@ -73,7 +79,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/measurement_frequency"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorMainText"/>
 
             <RadioGroup
                 android:id="@+id/rdg_frequency"
@@ -84,13 +91,15 @@
                     android:id="@+id/rdb_frequency50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/measurement_frequency_50hz" />
+                    android:text="@string/measurement_frequency_50hz"
+                    android:textColor="@color/colorMainText"/>
 
                 <RadioButton
                     android:id="@+id/rdb_frequenvy100"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/measurement_frequency_100hz" />
+                    android:text="@string/measurement_frequency_100hz"
+                    android:textColor="@color/colorMainText"/>
             </RadioGroup>
 
         </TableRow>
@@ -112,7 +121,8 @@
                 android:id="@+id/chk_testerLed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/measurement_testled" />
+                android:text="@string/measurement_testled"
+                android:textColor="@color/colorMainText"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -134,14 +144,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/status"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorMainText"/>
 
             <TextView
                 android:id="@+id/lbl_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="@string/waiting" />
+                android:text="@string/waiting"
+                android:textColor="@color/colorMainText"/>
         </TableRow>
 
         <TableRow
@@ -162,13 +174,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/message_list"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorMainText"/>
 
             <ListView
                 android:id="@+id/list_messageList"
                 android:layout_width="131dp"
                 android:layout_height="wrap_content"
-                android:layout_span="2"/>
+                android:layout_span="2"
+                android:textColor="@color/colorMainText"/>
 
         </TableRow>
 
