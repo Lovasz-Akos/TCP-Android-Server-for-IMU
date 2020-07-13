@@ -108,4 +108,8 @@ public class MainActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void ClientConnected() {
+        ((TextView)findViewById(R.id.lbl_status)).setText(ClientWorker.getClients().size() + " eszköz csatlakoztatva");
+    }
 }

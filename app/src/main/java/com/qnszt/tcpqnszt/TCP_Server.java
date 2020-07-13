@@ -123,6 +123,7 @@ public class TCP_Server{
                         if (find != null) {
                             if(find.contains("-CONNECTED")){
                                 ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
+                                MainActivity.mainActivity.ClientConnected();
                             }
                             else if(find.contains("-DISCONNECTED")){
                                 ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
