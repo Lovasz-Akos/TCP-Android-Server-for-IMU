@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ClientWorker {
     private static ArrayList<Client> clients = new ArrayList<>();
@@ -65,7 +66,7 @@ public class ClientWorker {
 
     public static void removeClient(final String clientName) {
         for (int i = 0; i < clients.size(); i++) {
-            if (clients.get(i).getName() == clientName) {
+            if (Objects.equals(clients.get(i).getName(), clientName)) {
                 clients.remove(i);
                 break;
             }

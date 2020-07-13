@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,7 +110,7 @@ public class TCP_Server{
                     String read = input.readLine();
 
                     updateConversationHandler.post(new updateUIThread(read));
-                    if(read == null || read=="null"){
+                    if((read == null) || Objects.equals(read, "null")){
                         input.close();
                         output.close();
                         Log.d("RUN", "Client disconnected");
@@ -119,11 +120,13 @@ public class TCP_Server{
                     Matcher matcher = regex.matcher(read);
                     if(matcher.find()){
                         String find = matcher.group(1);
-                        if(find.contains("-CONNECTED")){
-                            ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
-                        }
-                        else if(find.contains("-DISCONNECTED")){
-                            ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
+                        if (find != null) {
+                            if(find.contains("-CONNECTED")){
+                                ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
+                            }
+                            else if(find.contains("-DISCONNECTED")){
+                                ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
+                            }
                         }
                     }
 
