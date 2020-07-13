@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt;
+package com.qnszt.tcpqnszt;
 
 import org.junit.Test;
 

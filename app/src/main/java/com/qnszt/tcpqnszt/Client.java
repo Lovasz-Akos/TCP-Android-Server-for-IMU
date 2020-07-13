@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt;
+package com.qnszt.tcpqnszt;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

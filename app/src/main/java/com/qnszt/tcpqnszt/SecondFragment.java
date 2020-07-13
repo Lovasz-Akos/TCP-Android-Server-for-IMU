@@ -1,4 +1,4 @@
-package com.qnszt.tpcqnszt;
+package com.qnszt.tcpqnszt;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
