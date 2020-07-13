@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity{
         measurement.setDuration(((TextView)findViewById(R.id.txt_measurementDuration)).getText().toString());
         RadioButton selected = findViewById(((RadioGroup) findViewById(R.id.rdg_frequency)).getCheckedRadioButtonId());
         try{
-            measurement.setDelay(selected.getText() == "50hz" ? 20 : 10); //TODO: Add more freq options
+            measurement.setDelay(selected.getText() == "50Hz" ? 20 : 10); //TODO: Add more freq options
         }catch (Exception e){
 
         }
