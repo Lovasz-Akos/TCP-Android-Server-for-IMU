@@ -35,10 +35,17 @@ public class ClientWorker {
         Log.d("RUN", "Measurement `"+measurement.name+"` started for "+measurement.duration+" minutes");
     }
 
-    public static void broadcast(String meassage) {
-        if(meassage != null){
-            for (Client client: clients) {
-                send(client, meassage);
+    public static void broadcast(final String message) {
+        if(message != null){
+            for (final Client client: clients) {
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        send(client, message);
+                    }
+                });
+                t.start();
+                //send(client, message);
             }
         }
     }
@@ -46,6 +53,7 @@ public class ClientWorker {
     public static void send(@NotNull Client client, String message) {
         try {
             client.getWriter().write("<"+message+">");
+            client.getWriter().flush();
         } catch (IOException e) {
             Log.d("ERROR", String.format("Failed to send `%s` to %s (%s)", message, client.getName(), e.getMessage()));
         }

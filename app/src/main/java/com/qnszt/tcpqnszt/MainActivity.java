@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity{
 
         }
         MainActivity.measurement = measurement;
-        Log.d("ye", "EEEEEEEEEEEEEEEEEEEEEEEEE");
+        ClientWorker.startMeasurement(measurement);
         //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
