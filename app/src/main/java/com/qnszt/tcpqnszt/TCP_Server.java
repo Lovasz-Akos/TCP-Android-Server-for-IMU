@@ -127,8 +127,6 @@ public class TCP_Server{
                         }
                     }
 
-                    MainActivity.mainActivity.listIncomingMessages();
-
 
                     /*output.write(":)");
                     output.flush();*/
@@ -155,6 +153,10 @@ public class TCP_Server{
            // text.setText(text.getText().toString()+"Client Says: "+ msg + "\n");
             if (msg != null)
             Log.d("TAG", "run: "+msg);
+
+            //TODO: add the incoming messages to a list
+            MainActivity.mainActivity.listIncomingMessages(msg);
+
         }
     }
 }

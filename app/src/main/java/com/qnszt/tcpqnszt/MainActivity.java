@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity{
         //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
-    public void listIncomingMessages(){
+    public void listIncomingMessages(String msg){
 
         Date i = new Date();
-        listManager lm = new listManager();
-        lm.addItems(this, "hi" + i.getTime());
+        TextView tv = findViewById(R.id.textMessageTest);
+        tv.setText(msg);
     }
 
 
