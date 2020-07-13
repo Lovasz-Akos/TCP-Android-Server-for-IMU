@@ -49,11 +49,11 @@
 
             <EditText
                 android:id="@+id/txt_measurementDuration"
-                android:layout_width="160dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number"
-                android:importantForAutofill="no" />
+                android:importantForAutofill="no"
+                android:inputType="number" />
 
             <TextView
                 android:id="@+id/textView9"
