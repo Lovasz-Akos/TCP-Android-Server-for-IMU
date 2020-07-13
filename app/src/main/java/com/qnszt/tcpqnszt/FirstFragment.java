@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -32,9 +33,7 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.chk_testerLed).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: TCP.send("<LED1>");
-
-
+                ClientWorker.broadcast(String.format("led%s", ((CheckBox) view.findViewById(R.id.chk_testerLed)).isChecked() ? "1" : "0"));
             }
         });
     }
