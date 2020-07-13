@@ -19,7 +19,10 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -64,12 +67,19 @@ public class MainActivity extends AppCompatActivity{
 
     public void listIncomingMessages(String msg){
 
-        Date i = new Date();
         ListView msgList = findViewById(R.id.list_messageList);
 
-        messages.add(msg);
+        Calendar i = Calendar.getInstance();
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.fragment_first, messages);
+        i.add(Calendar.DATE, 1);
+        SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
+
+        String formazottDatum = format1.format(i.getTime());
+
+        messages.add(formazottDatum + " | " + msg);
+        //format1.format(i);
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
 
         msgList.setAdapter(adapter);
         msgList.deferNotifyDataSetChanged();
