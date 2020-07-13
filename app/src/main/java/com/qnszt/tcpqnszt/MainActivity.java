@@ -2,16 +2,13 @@ package com.qnszt.tcpqnszt;
 
 import android.os.Bundle;
 import android.os.Handler;
-
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -22,7 +19,6 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity{
 
 
-    ArrayList<String> messages = new ArrayList<>();
+    List<String> messages = new ArrayList<String>();
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
@@ -73,12 +69,9 @@ public class MainActivity extends AppCompatActivity{
 
         messages.add(msg);
 
-        String[] stringArray = messages.toArray(new String[0]);
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.activity_main, (List<String>) msgList);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.fragment_first, messages);
 
         msgList.setAdapter(adapter);
-
         msgList.deferNotifyDataSetChanged();
     }
 
