@@ -1,5 +1,6 @@
 package com.qnszt.tcpqnszt;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.LayoutRes;
@@ -9,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
+import org.apache.commons.lang3.StringUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -19,7 +21,6 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -72,13 +73,13 @@ public class MainActivity extends AppCompatActivity{
         Calendar i = Calendar.getInstance();
 
         i.add(Calendar.DATE, 1);
-        SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
 
         String formazottDatum = format1.format(i.getTime());
 
+        msg = StringUtils.strip(msg, "<>");
 
-        messages.add(formazottDatum + " | " + msg);
-        //format1.format(i);
+        messages.add(0, formazottDatum + " | " + msg);
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
 
