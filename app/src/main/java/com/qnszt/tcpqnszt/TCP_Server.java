@@ -40,6 +40,7 @@ public class TCP_Server{
 
 
     protected void onStop() {
+        //onStop();
         try {
             serverSocket.close();
         } catch (IOException e) {
