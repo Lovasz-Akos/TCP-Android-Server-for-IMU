@@ -111,6 +111,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void ClientConnected() {
-        ((TextView)findViewById(R.id.lbl_status)).setText(ClientWorker.getClients().size() + " eszköz csatlakoztatva");
+        ((TextView)findViewById(R.id.textView6)).setText("Státusz: " + ClientWorker.getClients().size() + " eszköz csatlakoztatva");
     }
 }
