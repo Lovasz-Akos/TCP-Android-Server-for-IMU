@@ -1,12 +1,16 @@
 <resources>
-    <string name="app_name">TPC QNSZT</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">HorseIMU Szerver</string>
+    <string name="action_settings">Beállítások</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="first_fragment_label">Mérés Indítás</string>
+    <string name="next">Következő</string>
+    <string name="previous">Előző</string>
+    <string name="measurement_name">Mérés indítása</string>
+    <string name="measurement_duration">Időtartam</string>
+    <string name="measurement_frequency">Mérés gyakorisága</string>
+    <string name="measurement_frequency_50hz">50Hz</string>
+    <string name="measurement_frequency_100hz">100Hz</string>
+    <string name="measurement_start">Indítás</string>
+    <string name="measurement_testled">Teszt LED</string>
+    <string name="dark_mode">Sötét Téma</string>
 </resources>
