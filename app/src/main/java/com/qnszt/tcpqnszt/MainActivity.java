@@ -3,39 +3,31 @@ package com.qnszt.tcpqnszt;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.util.Log;
-import org.apache.commons.lang3.StringUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import org.apache.commons.lang3.StringUtils;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
 
-    List<String> messages = new ArrayList<String>();
-
-    private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
     public static MainActivity mainActivity;
-
+    private static Handler handler = new Handler();
+    List<String> messages = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +43,14 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    public void startMeasurementClicked(){
+    public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
-        measurement.setName(((TextView)findViewById(R.id.txt_measurementName)).getText().toString());
-        measurement.setDuration(((TextView)findViewById(R.id.txt_measurementDuration)).getText().toString());
+        measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
+        measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
         RadioButton selected = findViewById(((RadioGroup) findViewById(R.id.rdg_frequency)).getCheckedRadioButtonId());
-        try{
+        try {
             measurement.setDelay(selected.getText() == "50Hz" ? 20 : 10); //TODO: Add more freq options
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         MainActivity.measurement = measurement;
@@ -66,7 +58,7 @@ public class MainActivity extends AppCompatActivity{
         //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
-    public void listIncomingMessages(String msg){
+    public void listIncomingMessages(String msg) {
 
         ListView msgList = findViewById(R.id.list_messageList);
 
@@ -111,6 +103,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void ClientConnected() {
-        ((TextView)findViewById(R.id.textView6)).setText("Státusz: " + ClientWorker.getClients().size() + " eszköz csatlakoztatva");
+        ((TextView) findViewById(R.id.textView6)).setText("Státusz: " + ClientWorker.getClients().size() + " eszköz csatlakoztatva");
     }
 }

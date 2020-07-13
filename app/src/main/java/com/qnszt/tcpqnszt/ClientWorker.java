@@ -13,35 +13,35 @@ import java.util.Objects;
 public class ClientWorker {
     private static ArrayList<Client> clients = new ArrayList<>();
 
-    public static void registerClient(String name, BufferedReader reader, BufferedWriter writer){
+    public static void registerClient(String name, BufferedReader reader, BufferedWriter writer) {
         Client temp_client = new Client(name, reader, writer);
         clients.add(temp_client);
         Log.d("RUN", String.format("Registered: %s", name));
         send(temp_client, "OK");
     }
 
-    public static void resetClients(){
+    public static void resetClients() {
         clients = new ArrayList<>();
     }
 
-    public static ArrayList<Client> getClients(){
+    public static ArrayList<Client> getClients() {
         return clients;
     }
 
-    public static void startMeasurement(@org.jetbrains.annotations.NotNull Measurement measurement){
+    public static void startMeasurement(@org.jetbrains.annotations.NotNull Measurement measurement) {
         broadcast(String.format("nam%s", measurement.name));
         broadcast(String.format("dur%s", measurement.duration));
         broadcast(String.format("del%s", measurement.delay));
         broadcast(String.format("sta%s", "")); //TODO: Send system time
-        Log.d("RUN", "Measurement `"+measurement.name+"` started for "+measurement.duration+" minutes");
+        Log.d("RUN", "Measurement `" + measurement.name + "` started for " + measurement.duration + " minutes");
     }
 
     public static void broadcast(final String message) {
-        if(message != null){
+        if (message != null) {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    for (final Client client: clients) {
+                    for (final Client client : clients) {
                         send(client, message);
                     }
                 }
@@ -57,7 +57,7 @@ public class ClientWorker {
 
     public static void send(@NotNull Client client, String message) {
         try {
-            client.getWriter().write("<"+message+">\n");
+            client.getWriter().write("<" + message + ">\n");
             client.getWriter().flush();
         } catch (IOException e) {
             Log.d("ERROR", String.format("Failed to send `%s` to %s (%s)", message, client.getName(), e.getMessage()));

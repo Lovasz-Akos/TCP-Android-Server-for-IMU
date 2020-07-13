@@ -21,10 +21,10 @@ public class Measurement {
         this.duration = duration;
     }
 
-    public void setDuration(String duration){
-        try{
+    public void setDuration(String duration) {
+        try {
             setDuration(Integer.parseInt(duration));
-        }catch (Exception e){
+        } catch (Exception e) {
             setDuration(0);
         }
     }
@@ -37,10 +37,10 @@ public class Measurement {
         this.delay = delay;
     }
 
-    public void setDelay(String delay){
-        try{
+    public void setDelay(String delay) {
+        try {
             setDelay(Integer.parseInt(delay));
-        }catch (Exception e){
+        } catch (Exception e) {
             setDelay(0);
         }
     }

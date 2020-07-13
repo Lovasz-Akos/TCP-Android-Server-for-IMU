@@ -41,7 +41,7 @@ public class Client {
         Reader = reader;
     }
 
-    public void send(String message){
+    public void send(String message) {
 
     }
 }
