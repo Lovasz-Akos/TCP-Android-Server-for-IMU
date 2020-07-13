@@ -14,16 +14,22 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
+
+    ArrayList<String> messages = new ArrayList<>();
 
     private static Handler handler = new Handler();
     public static Measurement measurement = new Measurement();
@@ -62,8 +68,17 @@ public class MainActivity extends AppCompatActivity{
     public void listIncomingMessages(String msg){
 
         Date i = new Date();
-        TextView tv = findViewById(R.id.textMessageTest);
-        tv.setText(msg);
+        ListView msgList = findViewById(R.id.list_messageList);
+
+        messages.add(msg);
+
+        String[] stringArray = messages.toArray(new String[0]);
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, 10, (List<String>) msgList);
+
+        msgList.setAdapter(adapter);
+
+        msgList.deferNotifyDataSetChanged();
     }
 
 
