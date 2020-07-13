@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity{
 
         String formazottDatum = format1.format(i.getTime());
 
+
         messages.add(formazottDatum + " | " + msg);
         //format1.format(i);
 
