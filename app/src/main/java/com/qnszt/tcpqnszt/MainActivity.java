@@ -3,16 +3,24 @@ package com.qnszt.tcpqnszt;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -21,12 +29,14 @@ public class MainActivity extends AppCompatActivity{
     public static Measurement measurement = new Measurement();
     public static MainActivity mainActivity;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         TCP_Server.SERVERPORT = 1883;
         new TCP_Server().server_start();
@@ -49,9 +59,13 @@ public class MainActivity extends AppCompatActivity{
         //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
-    public void getClientMessages(){
-        ClientWorker.getClients();
+    public void listIncomingMessages(){
+
+        Date i = new Date();
+        listManager lm = new listManager();
+        lm.addItems(this, "hi" + i.getTime());
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

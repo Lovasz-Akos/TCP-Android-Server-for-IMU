@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import android.os.Handler;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class TCP_Server{
@@ -86,10 +87,12 @@ public class TCP_Server{
 
                 this.output = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));
                 output.flush();
+
                 this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
 
                 this.clientSocket.setSoTimeout(10000);
                 Log.d("TAG", "CommunicationThread: "+this.input.readLine());
+
 
 
             } catch (IOException e) {
@@ -124,6 +127,9 @@ public class TCP_Server{
                         }
                     }
 
+                    MainActivity.mainActivity.listIncomingMessages();
+
+
                     /*output.write(":)");
                     output.flush();*/
 
@@ -132,6 +138,8 @@ public class TCP_Server{
                 }
             }
         }
+
+
 
     }
 
