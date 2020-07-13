@@ -22,7 +22,8 @@
                 android:id="@+id/textTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mérés neve" />
+                android:text="@string/measurement_name"
+                android:textAlignment="textEnd" />
 
             <EditText
                 android:id="@+id/txt_measurementName"
@@ -30,7 +31,8 @@
                 android:layout_height="wrap_content"
                 android:layout_span="2"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:importantForAutofill="no" />
 
         </TableRow>
 
@@ -42,7 +44,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mérés Időtartama"
+                android:text="@string/measurement_duration"
                 android:textAlignment="textEnd" />
 
             <EditText
@@ -50,14 +52,15 @@
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:importantForAutofill="no" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
-                android:text="perc" />
+                android:text="@string/minutes" />
 
         </TableRow>
 
@@ -69,7 +72,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mérés gyakorisága:"
+                android:text="@string/measurement_frequency"
                 android:textAlignment="textEnd" />
 
             <RadioGroup
@@ -81,13 +84,13 @@
                     android:id="@+id/rdb_frequency50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="50Hz" />
+                    android:text="@string/measurement_frequency_50hz" />
 
                 <RadioButton
                     android:id="@+id/rdb_frequenvy100"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="100Hz" />
+                    android:text="@string/measurement_frequency_100hz" />
             </RadioGroup>
 
         </TableRow>
@@ -109,7 +112,7 @@
                 android:id="@+id/chk_testerLed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Teszt LED" />
+                android:text="@string/measurement_testled" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -119,7 +122,7 @@
                 android:id="@+id/btn_startMeasurement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="START"></Button>
+                android:text="@string/measurement_start" />
         </TableRow>
 
         <TableRow
@@ -130,7 +133,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Státusz:"
+                android:text="@string/status"
                 android:textAlignment="textEnd" />
 
             <TextView
@@ -138,7 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:text="Várakozás..." />
+                android:text="@string/waiting" />
         </TableRow>
 
         <TableRow
@@ -158,19 +161,14 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Eszközök:"
+                android:text="@string/message_list"
                 android:textAlignment="textEnd" />
 
             <ListView
                 android:id="@+id/list_messageList"
                 android:layout_width="131dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/testView"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="szija :)" />
+                android:layout_span="2"/>
 
         </TableRow>
 

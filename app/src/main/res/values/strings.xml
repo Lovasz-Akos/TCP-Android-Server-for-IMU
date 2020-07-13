@@ -13,4 +13,8 @@
     <string name="measurement_start">Indítás</string>
     <string name="measurement_testled">Teszt LED</string>
     <string name="dark_mode">Sötét Téma</string>
+    <string name="message_list">Üzenetek</string>
+    <string name="waiting">Várakozás...</string>
+    <string name="status">Státusz:</string>
+    <string name="minutes">perc</string>
 </resources>
