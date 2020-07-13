@@ -37,22 +37,26 @@ public class ClientWorker {
 
     public static void broadcast(final String message) {
         if(message != null){
-            for (final Client client: clients) {
-                Thread t = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (final Client client: clients) {
                         send(client, message);
                     }
-                });
-                t.start();
-                //send(client, message);
+                }
+            });
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                Log.d("ERROR", e.getMessage());
             }
         }
     }
 
     public static void send(@NotNull Client client, String message) {
         try {
-            client.getWriter().write("<"+message+">");
+            client.getWriter().write("<"+message+">\n");
             client.getWriter().flush();
         } catch (IOException e) {
             Log.d("ERROR", String.format("Failed to send `%s` to %s (%s)", message, client.getName(), e.getMessage()));
