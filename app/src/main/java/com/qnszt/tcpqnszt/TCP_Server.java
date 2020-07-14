@@ -117,7 +117,7 @@ public class TCP_Server {
                         if (find != null) {
                             if (find.contains("-CONNECTED")) {
                                 ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
-                                MainActivity.mainActivity.ClientConnected();
+
                             } else if (find.contains("-DISCONNECTED")) {
                                 ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
                             }
@@ -149,6 +149,7 @@ public class TCP_Server {
             // text.setText(text.getText().toString()+"Client Says: "+ msg + "\n");
             if (msg != null)
                 Log.d("TAG", "run: " + msg);
+
 
             //TODO: add the incoming messages to a list
             MainActivity.mainActivity.listIncomingMessages(msg);

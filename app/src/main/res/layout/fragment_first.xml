@@ -118,9 +118,9 @@
         android:text="@string/message_list"
         android:textAlignment="textStart"
         android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toTopOf="@+id/list_messageList"
         app:layout_constraintEnd_toStartOf="@+id/list_messageList"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chk_testerLed" />
+        app:layout_constraintStart_toStartOf="@+id/textView6" />
 
     <RadioGroup
         android:id="@+id/rdg_frequency"
@@ -156,5 +156,23 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement">
 
     </ListView>
+
+    <TextView
+        android:id="@+id/statCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="kliens csatlakozva"
+        app:layout_constraintStart_toEndOf="@+id/statCounter"
+        app:layout_constraintTop_toTopOf="@+id/statCounter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.qnszt.tcpqnszt;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
         msgList.setAdapter(adapter);
         msgList.deferNotifyDataSetChanged();
+
+        ClientConnected();
     }
 
 
@@ -103,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void ClientConnected() {
-        ((TextView) findViewById(R.id.textView6)).setText("Státusz: " + ClientWorker.getClients().size() + " eszköz csatlakoztatva");
+
+        int clientNum = ClientWorker.getClients().size();
+        ((TextView) findViewById(R.id.statCounter)).setText(String.valueOf(clientNum));
+        Log.d("MainActivity", "ClientConnected: "+ clientNum);
     }
 }
