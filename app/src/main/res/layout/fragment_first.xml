@@ -6,176 +6,155 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
-    <TableLayout
+    <TextView
+        android:id="@+id/textTest"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:padding="20dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/measurement_name"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementName"
+        app:layout_constraintEnd_toStartOf="@+id/txt_measurementName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_measurementName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_span="2"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="@color/colorMainText"
+        android:textColorHint="@color/colorAccent2"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/measurement_duration"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementDuration"
+        app:layout_constraintEnd_toStartOf="@+id/txt_measurementDuration"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/measurement_frequency"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="@+id/rdg_frequency"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minutes"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementDuration"
+        app:layout_constraintStart_toEndOf="@+id/txt_measurementDuration"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
+
+    <Button
+        android:id="@+id/btn_startMeasurement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_span="1"
+        android:text="@string/measurement_start"
+        app:layout_constraintBottom_toBottomOf="@+id/chk_testerLed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chk_testerLed"
+        app:layout_constraintTop_toTopOf="@+id/chk_testerLed" />
+
+    <EditText
+        android:id="@+id/txt_measurementDuration"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementName"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
+
+    <CheckBox
+        android:id="@+id/chk_testerLed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/measurement_testled"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintEnd_toEndOf="@+id/txt_measurementName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/status"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdg_frequency" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/message_list"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintEnd_toStartOf="@+id/list_messageList"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chk_testerLed" />
+
+    <RadioGroup
+        android:id="@+id/rdg_frequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration">
+
+        <RadioButton
+            android:id="@+id/rdb_frequency50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/measurement_frequency_50hz"
+            android:textColor="@color/colorMainText" />
+
+        <RadioButton
+            android:id="@+id/rdb_frequenvy100"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/measurement_frequency_100hz"
+            android:textColor="@color/colorMainText" />
+    </RadioGroup>
+
+    <ListView
+        android:id="@+id/list_messageList"
+        android:layout_width="259dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_span="3"
+        android:textColor="@color/colorMainText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/measurement_name"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorMainText" />
-
-            <EditText
-                android:id="@+id/txt_measurementName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="2"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="textPersonName"
-                android:textColor="@color/colorMainText"
-                android:textColorHint="@color/colorAccent2" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/measurement_duration"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorMainText" />
-
-            <EditText
-                android:id="@+id/txt_measurementDuration"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:textColor="@color/colorMainText"/>
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:text="@string/minutes"
-                android:textColor="@color/colorMainText"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/measurement_frequency"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorMainText"/>
-
-            <RadioGroup
-                android:id="@+id/rdg_frequency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/rdb_frequency50"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/measurement_frequency_50hz"
-                    android:textColor="@color/colorMainText"/>
-
-                <RadioButton
-                    android:id="@+id/rdb_frequenvy100"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/measurement_frequency_100hz"
-                    android:textColor="@color/colorMainText"/>
-            </RadioGroup>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="50dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <CheckBox
-                android:id="@+id/chk_testerLed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/measurement_testled"
-                android:textColor="@color/colorMainText"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/btn_startMeasurement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_span="1"
-                android:text="@string/measurement_start" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/status"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorMainText"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/message_list"
-                android:textAlignment="textStart"
-                android:textColor="@color/colorMainText" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ListView
-                android:id="@+id/list_messageList"
-                android:layout_width="259dp"
-                android:layout_height="wrap_content"
-                android:layout_span="3"
-                android:textColor="@color/colorMainText" />
-
-        </TableRow>
-
-    </TableLayout>
+    </ListView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
