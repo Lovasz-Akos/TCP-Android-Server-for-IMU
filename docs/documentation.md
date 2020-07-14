@@ -6,11 +6,11 @@ Fizikai javítások a szenzorokon.
 Ezekre következő képpen reagáltunk:
 - Megkaptuk az instrukciókat, új lendületet vittünk a csapat munkájába. 
 - Saját TCP szerverünk van androidra, onnan üzemeltetjük a komponenseket, így emeltük a csatlakozások számát 8ra. 
-- Mobil hotspot lehetőség miatt tudtuk bővíteni 
+- Valamint a mobil hotspot lehetőség miatt tudtuk bővíteni. Így nincs késés se 
 - Eltárolja a felhasználókat, egyszerre kezeljük a be- és kimenő adatokat. Fény visszajelzés, időbélyeges üzenetek, automatikus taggelés, és annak eltávolítása, valamint számolja a felhasználókat.
 - A szinkronizálást és minden eszköz kezelését telefonról vezérelhetővé tettük.
 - Közben folyamatosan teszteljük a mérő eszközök stabilitását, üzem idejét, ezzel egy időben kalibrálási folyamatok is futnak
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2MjE3MDU1OCwxMTUxMDg4MzU5LC0yMD
-Y1MjkzODIxXX0=
+eyJoaXN0b3J5IjpbMTU4ODIwNzgxMCwtNjYyMTcwNTU4LDExNT
+EwODgzNTksLTIwNjUyOTM4MjFdfQ==
 -->
