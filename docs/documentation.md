@@ -11,5 +11,5 @@ Ezekre következő képpen reagáltunk:
 - A szinkronizálást és minden eszköz kezelését telefonról vezérelhetővé tettük.
 - Közben folyamatosan teszteljük a mérő eszközök stabilitását, üzem idejét, ezzel egy időben kalibrálási folyamatok is futnak
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjQ1Mzg4NV19
+eyJoaXN0b3J5IjpbLTIwNjUyOTM4MjFdfQ==
 -->
