@@ -109,6 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
         int clientNum = ClientWorker.getClients().size();
         ((TextView) findViewById(R.id.statCounter)).setText(String.valueOf(clientNum));
-        Log.d("MainActivity", "ClientConnected: "+ clientNum);
+        Log.d("MainActivity", "ClientConnected: " + clientNum);
     }
 }
