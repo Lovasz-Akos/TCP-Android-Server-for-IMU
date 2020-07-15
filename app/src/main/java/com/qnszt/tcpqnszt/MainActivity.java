@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         }
         MainActivity.measurement = measurement;
         ClientWorker.startMeasurement(measurement);
-        //TODO: TCP.send(measurement.name);TCP.send(measurement.duration);TCP.send(measurement.delay);TCP.send(sys.time);
     }
 
     public void listIncomingMessages(String msg) {

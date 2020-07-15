@@ -129,7 +129,11 @@ public class TCP_Server {
                     output.flush();*/
 
                 } catch (Exception s) {
-                    //s.printStackTrace();
+                    //Log.d("ERROR", s.getMessage());
+                    ClientWorker.removeClient(input, output);
+                    try {
+                        clientSocket.close();
+                    } catch (IOException e) { }
                 }
             }
         }

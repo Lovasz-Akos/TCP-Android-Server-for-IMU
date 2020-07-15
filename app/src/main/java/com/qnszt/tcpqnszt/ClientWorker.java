@@ -72,4 +72,13 @@ public class ClientWorker {
             }
         }
     }
+
+    public static void removeClient(BufferedReader input, BufferedWriter output) {
+        for (int i = 0; i < clients.size(); i++) {
+            if (Objects.equals(clients.get(i).getReader(), input) && Objects.equals(clients.get(i).getWriter(), output)) {
+                clients.remove(i);
+                break;
+            }
+        }
+    }
 }
