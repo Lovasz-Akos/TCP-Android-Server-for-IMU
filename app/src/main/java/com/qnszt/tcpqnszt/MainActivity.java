@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         msg = StringUtils.strip(msg, "<>");
 
-        if (msg != null && msg != "null" && msg != "" && StringUtils.strip(msg, " ") != "") {
+        if (!msg.equals("null") && !msg.equals(null) && !msg.equals("") && !StringUtils.strip(msg, " ").equals("") && !msg.isEmpty()) {
             messages.add(0, formazottDatum + " | " + msg);
 
             if (tapCounter >= 20) {
