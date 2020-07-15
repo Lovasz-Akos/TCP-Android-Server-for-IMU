@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -101,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
         Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark zone", 500);
 
-
+        EditText et1 = findViewById(R.id.txt_measurementDuration);
+        EditText et2 = findViewById(R.id.txt_measurementName);
 
         TextView tv6 = findViewById(R.id.textView6);
         TextView tv2 = findViewById(R.id.textView2);
@@ -137,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
             tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             rbt1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             rbt2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+            et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+            et2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
             bg.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
 
