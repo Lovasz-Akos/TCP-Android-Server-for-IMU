@@ -82,17 +82,18 @@ public class MainActivity extends AppCompatActivity {
 
         msg = StringUtils.strip(msg, "<>");
 
-        messages.add(0, formazottDatum + " | " + msg);
+        if (msg != null && msg != "null" && msg != "" && StringUtils.strip(msg, " ") != "") {
+            messages.add(0, formazottDatum + " | " + msg);
 
-        if (tapCounter >= 20){
-            secretDarkmode(this.findViewById(R.id.secretBtn));
+            if (tapCounter >= 20) {
+                secretDarkmode(this.findViewById(R.id.secretBtn));
+            } else {
+                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+                msgList.setAdapter(adapter);
+                msgList.deferNotifyDataSetChanged();
+            }
+            ClientConnected();
         }
-        else{
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
-            msgList.setAdapter(adapter);
-            msgList.deferNotifyDataSetChanged();
-        }
-        ClientConnected();
     }
 
     public void secretDarkmode(View view) {
