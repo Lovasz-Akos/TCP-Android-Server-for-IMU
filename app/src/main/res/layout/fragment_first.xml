@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="@string/measurement_name"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
@@ -39,6 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="@string/measurement_duration"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
@@ -51,6 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="@string/measurement_frequency"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
@@ -62,6 +68,8 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="@string/minutes"
         android:textColor="@color/colorMainText"
         app:layout_constraintBottom_toBottomOf="@+id/txt_measurementDuration"
@@ -70,8 +78,8 @@
 
     <Button
         android:id="@+id/btn_startMeasurement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="57dp"
         android:layout_span="1"
         android:text="@string/measurement_start"
         app:layout_constraintBottom_toBottomOf="@+id/chk_testerLed"
@@ -92,11 +100,14 @@
 
     <CheckBox
         android:id="@+id/chk_testerLed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="129dp"
+        android:layout_height="46dp"
         android:layout_margin="20dp"
+        android:scaleX="1.4"
+        android:scaleY="1.4"
         android:text="@string/measurement_testled"
         android:textColor="@color/colorMainText"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/txt_measurementName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -106,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:scaleX="1.2"
         android:text="@string/status"
         android:textAlignment="textStart"
         android:textColor="@color/colorMainText"
@@ -117,31 +129,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="@string/message_list"
         android:textAlignment="textStart"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toTopOf="@+id/list_messageList"
         app:layout_constraintEnd_toStartOf="@+id/list_messageList"
-        app:layout_constraintStart_toStartOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement" />
 
     <RadioGroup
         android:id="@+id/rdg_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="67dp"
+        android:paddingStart="2dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
         app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration">
 
         <RadioButton
             android:id="@+id/rdb_frequency50"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
             android:text="@string/measurement_frequency_50hz"
             android:textColor="@color/colorMainText" />
 
         <RadioButton
             android:id="@+id/rdb_frequenvy100"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
             android:text="@string/measurement_frequency_100hz"
             android:textColor="@color/colorMainText" />
     </RadioGroup>
@@ -149,13 +170,15 @@
     <ListView
         android:id="@+id/list_messageList"
         android:layout_width="259dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="20dp"
         android:layout_span="3"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:textColor="@color/colorMainText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement">
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
 
     </ListView>
 
@@ -163,7 +186,9 @@
         android:id="@+id/statCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -172,7 +197,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="18dp"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
         android:text="kliens csatlakozva"
         app:layout_constraintStart_toEndOf="@+id/statCounter"
         app:layout_constraintTop_toTopOf="@+id/statCounter" />
