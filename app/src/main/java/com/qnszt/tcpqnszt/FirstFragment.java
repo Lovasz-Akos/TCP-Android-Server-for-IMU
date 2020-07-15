@@ -5,9 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.snackbar.Snackbar;
 
 public class FirstFragment extends Fragment {
 
@@ -26,7 +30,16 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.btn_startMeasurement).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.mainActivity.startMeasurementClicked();
+                Boolean nameFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementName) != null && ((TextView)MainActivity.mainActivity.findViewById(R.id.txt_measurementName)).getText().length() > 0;
+                Boolean durationFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementDuration) != null && ((TextView)MainActivity.mainActivity.findViewById(R.id.txt_measurementDuration)).getText().length() > 0;
+                if( nameFilled && durationFilled ) {
+                    MainActivity.mainActivity.startMeasurementClicked();
+                }else{
+                    Snackbar snackbar = Snackbar
+                            .make(MainActivity.mainActivity.findViewById(R.id.layout), "Mérés neve vagy ideje nincs kitöltve!", Snackbar.LENGTH_LONG);
+                    snackbar.setBackgroundTint(ContextCompat.getColor(view.getContext(), R.color.colorAlert));
+                    snackbar.show();
+                }
             }
         });
 

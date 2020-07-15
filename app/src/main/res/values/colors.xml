@@ -6,6 +6,7 @@
     <color name="colorAccent2">#008166</color>
     <color name="colorBackground">#ffffff</color>
     <color name="colorMainText">#303030</color>
+    <color name="colorAlert">#FF0D0D</color>
 
     <color name="colorPrimary_DarkTheme">#2cc79b</color>
     <color name="colorPrimaryDark_DarkTheme">#2cc79b</color>
