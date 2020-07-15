@@ -5,7 +5,7 @@
     <string name="first_fragment_label">Mérés Indítás</string>
     <string name="next">Következő</string>
     <string name="previous">Előző</string>
-    <string name="measurement_name">Mérés indítása</string>
+    <string name="measurement_name">Mérés neve</string>
     <string name="measurement_duration">Időtartam</string>
     <string name="measurement_frequency">Mérés gyakorisága</string>
     <string name="measurement_frequency_50hz">50Hz</string>
