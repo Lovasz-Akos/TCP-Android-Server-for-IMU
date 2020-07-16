@@ -30,6 +30,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private static Handler handler = new Handler();
     private static int tapCounter = 0;
     List<String> messages = new ArrayList<String>();
+
+    Date currentMilis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         TCP_Server.SERVERPORT = 1883;
         new TCP_Server().server_start();
         MainActivity.mainActivity = this;
+
 
     }
 
@@ -100,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     public void secretDarkmode(View view) {
         tapCounter++;
 
-        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark zone", 500);
+        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark zone", 5000);
 
         EditText et1 = findViewById(R.id.txt_measurementDuration);
         EditText et2 = findViewById(R.id.txt_measurementName);
@@ -165,6 +169,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Log.d("OnClick", "secretDarkmode: clicked" + tapCounter);
+
+            currentMilis = new Date();
+            Long miliNumbers = currentMilis.getTime();
+            Log.d("Test", "milis:" + miliNumbers);
+
 
 
     }

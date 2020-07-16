@@ -8,9 +8,11 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 public class ClientWorker {
+    static Date milis = new Date();
     private static ArrayList<Client> clients = new ArrayList<>();
 
     public static void registerClient(String name, BufferedReader reader, BufferedWriter writer) {
@@ -32,7 +34,7 @@ public class ClientWorker {
         broadcast(String.format("nam%s", measurement.name));
         broadcast(String.format("dur%s", measurement.duration));
         broadcast(String.format("del%s", measurement.delay));
-        broadcast(String.format("sta%s", "")); //TODO: Send system time
+        broadcast(String.format("sta%s", milis.getTime())); //TODO: Send system time // ez most long-ként current milisec, de mivel string nemtudom hogy számít-e a long?
         Log.d("RUN", "Measurement `" + measurement.name + "` started for " + measurement.duration + " minutes");
     }
 
