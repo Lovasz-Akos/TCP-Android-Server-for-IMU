@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     public void secretDarkmode(View view) {
         tapCounter++;
 
-        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side     o(〃＾▽＾〃)o", 5000);
+        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side    o((>ω< ))o", 5000);
         mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
         mySnackbar.setTextColor(Color.BLACK);
 
