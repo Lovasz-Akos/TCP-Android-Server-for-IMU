@@ -135,20 +135,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementFrequency" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:text="@string/message_list"
-        android:textAlignment="textStart"
-        android:textColor="@color/colorMainText"
-        app:layout_constraintEnd_toStartOf="@+id/list_messageList"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement" />
-
     <ListView
         android:id="@+id/list_messageList"
         android:layout_width="259dp"
@@ -158,9 +144,10 @@
         android:scaleX="1.2"
         android:scaleY="1.2"
         android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement">
 
     </ListView>
 

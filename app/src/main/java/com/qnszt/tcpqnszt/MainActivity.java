@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         if (msg != null && !msg.equals("null") && !msg.equals("") && !StringUtils.strip(msg, " ").equals("") && !msg.isEmpty()) {
             messages.add(0, formazottDatum + " | " + msg);
 
-            if (tapCounter >= 20) {
+            if (tapCounter >= 10) {
                 secretDarkmode(this.findViewById(R.id.secretBtn));
             } else {
                 ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
@@ -99,12 +99,13 @@ public class MainActivity extends AppCompatActivity {
     public void secretDarkmode(View view) {
         tapCounter++;
 
-        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side    o((>ω< ))o", 5000);
+        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side    o((>ω< ))o", 1000);
         mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
         mySnackbar.setTextColor(Color.BLACK);
 
         EditText et1 = findViewById(R.id.txt_measurementDuration);
         EditText et2 = findViewById(R.id.txt_measurementName);
+        EditText et3 = findViewById(R.id.txt_measurementFrequency);
 
         TextView tv6 = findViewById(R.id.textView6);
         TextView tv2 = findViewById(R.id.textView2);
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tv0 = findViewById(R.id.textTest);
         TextView tv9 = findViewById(R.id.textView9);
         TextView tv4 = findViewById(R.id.textView4);
-        TextView tv11 = findViewById(R.id.textView11);
         TextView tv5 = findViewById(R.id.statCounter);
         CheckBox cb1 = findViewById(R.id.chk_testerLed);
 
@@ -133,14 +133,16 @@ public class MainActivity extends AppCompatActivity {
             tv0.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv9.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv4.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+           // tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+            et3.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
             bg.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
 
             list.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
             //listText.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+
             ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages){
 
                 @Override
