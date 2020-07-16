@@ -139,7 +139,7 @@
         android:id="@+id/list_messageList"
         android:layout_width="259dp"
         android:layout_height="0dp"
-        android:layout_margin="20dp"
+        android:layout_margin="30dp"
         android:layout_span="3"
         android:scaleX="1.2"
         android:scaleY="1.2"
