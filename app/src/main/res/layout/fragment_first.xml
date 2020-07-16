@@ -60,7 +60,6 @@
         android:text="@string/measurement_frequency"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toBottomOf="@+id/rdg_frequency"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
 
@@ -122,7 +121,7 @@
         android:textAlignment="textStart"
         android:textColor="@color/colorMainText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rdg_frequency" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementFrequency" />
 
     <TextView
         android:id="@+id/textView11"
@@ -137,35 +136,6 @@
         app:layout_constraintEnd_toStartOf="@+id/list_messageList"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement" />
-
-    <RadioGroup
-        android:id="@+id/rdg_frequency"
-        android:layout_width="0dp"
-        android:layout_height="67dp"
-        android:paddingStart="2dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
-        app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
-        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration">
-
-        <RadioButton
-            android:id="@+id/rdb_frequency50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
-            android:text="@string/measurement_frequency_50hz"
-            android:textColor="@color/colorMainText" />
-
-        <RadioButton
-            android:id="@+id/rdb_frequenvy100"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleX="1.2"
-            android:scaleY="1.2"
-            android:text="@string/measurement_frequency_100hz"
-            android:textColor="@color/colorMainText" />
-    </RadioGroup>
 
     <ListView
         android:id="@+id/list_messageList"
@@ -218,5 +188,14 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_measurementFrequency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
