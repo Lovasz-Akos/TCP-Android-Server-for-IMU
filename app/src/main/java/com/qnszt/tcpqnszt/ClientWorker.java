@@ -2,6 +2,7 @@ package com.qnszt.tcpqnszt;
 
 import android.util.Log;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
@@ -34,7 +35,8 @@ public class ClientWorker {
         broadcast(String.format("nam%s", measurement.name));
         broadcast(String.format("dur%s", measurement.duration));
         broadcast(String.format("del%s", measurement.delay));
-        broadcast(String.format("sta%s", milis.getTime())); //TODO: Send system time // ez most long-ként current milisec, de mivel string nemtudom hogy számít-e a long?
+        broadcast(String.format("new%s", milis.getTime()));
+        broadcast("sta");
         Log.d("RUN", "Measurement `" + measurement.name + "` started for " + measurement.duration + " minutes, " + milis.getTime() + " is the current time in milisecods");
     }
 

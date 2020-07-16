@@ -104,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
     public void secretDarkmode(View view) {
         tapCounter++;
 
-        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark zone", 5000);
+        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side o(〃＾▽＾〃)o", 5000);
+        mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
+        mySnackbar.setTextColor(Color.BLACK);
 
         EditText et1 = findViewById(R.id.txt_measurementDuration);
         EditText et2 = findViewById(R.id.txt_measurementName);
@@ -126,11 +128,9 @@ public class MainActivity extends AppCompatActivity {
         //TextView listText = list.findViewById(R.id.list_messageList);
 
 
-        if (tapCounter >= 20) {
+        if (tapCounter >= 10) {
+            mySnackbar.show();
 
-            if (tapCounter == 20){
-                mySnackbar.show();
-            }
             findViewById(R.id.btn_startMeasurement).setBackgroundColor(getResources().getColor(R.color.colorAccent_DarkTheme));
             cb1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv5.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
