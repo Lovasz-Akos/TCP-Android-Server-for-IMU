@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
     public void secretDarkmode(View view) {
         tapCounter++;
 
-        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side o(〃＾▽＾〃)o", 5000);
+        Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side     o(〃＾▽＾〃)o", 5000);
         mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
         mySnackbar.setTextColor(Color.BLACK);
 
@@ -185,10 +185,6 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
