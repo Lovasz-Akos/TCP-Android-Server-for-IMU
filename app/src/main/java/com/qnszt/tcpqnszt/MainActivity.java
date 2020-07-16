@@ -64,12 +64,7 @@ public class MainActivity extends AppCompatActivity {
         Measurement measurement = new Measurement();
         measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
         measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
-        RadioButton selected = findViewById(((RadioGroup) findViewById(R.id.rdg_frequency)).getCheckedRadioButtonId());
-        try {
-            measurement.setDelay(selected.getText() == "50Hz" ? 20 : 10); //TODO: Add more freq options
-        } catch (Exception ignored) {
-
-        }
+        measurement.setDelay(((TextView) findViewById(R.id.txt_measurementFrequency)).getText().toString());
         MainActivity.measurement = measurement;
         ClientWorker.startMeasurement(measurement);
     }
@@ -116,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tv9 = findViewById(R.id.textView9);
         TextView tv4 = findViewById(R.id.textView4);
         TextView tv11 = findViewById(R.id.textView11);
-        RadioButton rbt1 = findViewById(R.id.rdb_frequency50);
-        RadioButton rbt2 = findViewById(R.id.rdb_frequenvy100);
         TextView tv5 = findViewById(R.id.statCounter);
         CheckBox cb1 = findViewById(R.id.chk_testerLed);
 
@@ -141,8 +134,6 @@ public class MainActivity extends AppCompatActivity {
             tv9.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv4.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            rbt1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            rbt2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
