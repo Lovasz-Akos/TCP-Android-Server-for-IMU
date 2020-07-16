@@ -35,7 +35,7 @@ public class ClientWorker {
         broadcast(String.format("dur%s", measurement.duration));
         broadcast(String.format("del%s", measurement.delay));
         broadcast(String.format("sta%s", milis.getTime())); //TODO: Send system time // ez most long-ként current milisec, de mivel string nemtudom hogy számít-e a long?
-        Log.d("RUN", "Measurement `" + measurement.name + "` started for " + measurement.duration + " minutes");
+        Log.d("RUN", "Measurement `" + measurement.name + "` started for " + measurement.duration + " minutes, " + milis.getTime() + " is the current time in milisecods");
     }
 
     public static void broadcast(final String message) {
