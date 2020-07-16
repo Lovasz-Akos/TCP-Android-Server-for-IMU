@@ -121,8 +121,11 @@ public class MainActivity extends AppCompatActivity {
         //TextView listText = list.findViewById(R.id.list_messageList);
 
 
-        if (tapCounter >= 10) {
+        if (tapCounter == 10){
             mySnackbar.show();
+        }
+        if (tapCounter >= 10) {
+
 
             findViewById(R.id.btn_startMeasurement).setBackgroundColor(getResources().getColor(R.color.colorAccent_DarkTheme));
             cb1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
