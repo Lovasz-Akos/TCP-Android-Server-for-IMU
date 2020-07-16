@@ -144,6 +144,8 @@ public class TCP_Server {
                     ClientWorker.removeClient(input, output);
                     try {
                         clientSocket.close();
+                        clientSocket = null;
+                        Thread.currentThread().interrupt();
                     } catch (IOException e) { }
                 }
             }
