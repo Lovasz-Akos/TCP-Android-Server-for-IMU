@@ -1,8 +1,13 @@
 package com.qnszt.tcpqnszt;
 
+import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,6 +16,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -79,18 +85,23 @@ public class TCP_Server {
 
             this.clientSocket = clientSocket;
 
-            try {
 
+            try {
+                clientSocket.setSoTimeout(180_000);
                 this.output = new BufferedWriter(new OutputStreamWriter(this.clientSocket.getOutputStream()));
                 output.flush();
 
                 this.input = new BufferedReader(new InputStreamReader(this.clientSocket.getInputStream()));
-
-                this.clientSocket.setSoTimeout(10000);
                 Log.d("TAG", "CommunicationThread: " + this.input.readLine());
 
 
-            } catch (IOException e) {
+            } catch (SocketTimeoutException e){
+                Snackbar snackbar = Snackbar
+                        .make(MainActivity.mainActivity.findViewById(R.id.layout), String.format("%s nem válaszolt", clientSocket.getInetAddress().getHostAddress()), Snackbar.LENGTH_LONG);
+                snackbar.setBackgroundTint(ContextCompat.getColor(MainActivity.mainActivity.findViewById(R.id.layout).getContext(), R.color.colorAlert));
+                snackbar.show();
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
         }
