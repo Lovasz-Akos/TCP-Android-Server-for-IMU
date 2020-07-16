@@ -17,4 +17,5 @@
     <string name="waiting">Várakozás...</string>
     <string name="status">Státusz:</string>
     <string name="minutes">perc</string>
+    <string name="hertz" translatable="false">Hz</string>
 </resources>

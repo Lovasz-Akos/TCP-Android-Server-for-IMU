@@ -75,6 +75,18 @@
         app:layout_constraintStart_toEndOf="@+id/txt_measurementDuration"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="1.2"
+        android:scaleY="1.2"
+        android:text="@string/hertz"
+        android:textColor="@color/colorMainText"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementFrequency"
+        app:layout_constraintStart_toEndOf="@+id/txt_measurementFrequency"
+        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
+
     <Button
         android:id="@+id/btn_startMeasurement"
         android:layout_width="113dp"
@@ -191,7 +203,7 @@
 
     <EditText
         android:id="@+id/txt_measurementFrequency"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
