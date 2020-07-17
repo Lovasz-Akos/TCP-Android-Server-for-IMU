@@ -20,10 +20,11 @@
         android:textColor="@color/colorMainText"
         app:layout_constraintBottom_toBottomOf="@+id/txt_measurementName"
         app:layout_constraintEnd_toStartOf="@+id/txt_measurementName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/txt_measurementName" />
 
     <EditText
         android:id="@+id/txt_measurementName"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -60,7 +61,8 @@
         android:text="@string/measurement_frequency"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementFrequency"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
 
     <TextView
@@ -101,6 +103,7 @@
 
     <EditText
         android:id="@+id/txt_measurementDuration"
+        android:textAlignment="center"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -198,6 +201,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
 
