@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         TextView tv2 = findViewById(R.id.textView2);
         TextView tv3 = findViewById(R.id.textView3);
         TextView tv0 = findViewById(R.id.textTest);
-        TextView tv9 = findViewById(R.id.textView9);
+
         TextView tv4 = findViewById(R.id.textView4);
         TextView tv5 = findViewById(R.id.statCounter);
         CheckBox cb1 = findViewById(R.id.chk_testerLed);
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             tv2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv3.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv0.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            tv9.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+
             tv4.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
            // tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
             bg.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
 
-            list.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
+            list.setBackgroundColor(Color.TRANSPARENT);
             //listText.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
             ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages){
