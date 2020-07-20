@@ -1,6 +1,5 @@
 package com.qnszt.tcpqnszt;
 
-import android.graphics.Color;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
@@ -95,13 +94,12 @@ public class TCP_Server {
                 Log.d("TAG", "CommunicationThread: " + this.input.readLine());
 
 
-            } catch (SocketTimeoutException e){
+            } catch (SocketTimeoutException e) {
                 Snackbar snackbar = Snackbar
                         .make(MainActivity.mainActivity.findViewById(R.id.layout), String.format("%s nem válaszolt", clientSocket.getInetAddress().getHostAddress()), Snackbar.LENGTH_LONG);
                 snackbar.setBackgroundTint(ContextCompat.getColor(MainActivity.mainActivity.findViewById(R.id.layout).getContext(), R.color.colorAlert));
                 snackbar.show();
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -146,7 +144,8 @@ public class TCP_Server {
                         clientSocket.close();
                         clientSocket = null;
                         Thread.currentThread().interrupt();
-                    } catch (IOException e) { }
+                    } catch (IOException e) {
+                    }
                 }
             }
         }

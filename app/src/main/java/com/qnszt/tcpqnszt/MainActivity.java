@@ -1,7 +1,6 @@
 package com.qnszt.tcpqnszt;
 
 import android.annotation.SuppressLint;
-import android.app.StatusBarManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -89,12 +88,12 @@ public class MainActivity extends AppCompatActivity {
             if (tapCounter >= 10) {
                 secretDarkmode(this.findViewById(R.id.secretBtn));
             } else {
-                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages){
+                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages) {
                     @Override
                     public View getView(int position, View convertView, ViewGroup parent) {
-                        View view =super.getView(position, convertView, parent);
+                        View view = super.getView(position, convertView, parent);
 
-                        TextView textView=(TextView) view.findViewById(android.R.id.text1);
+                        TextView textView = view.findViewById(android.R.id.text1);
 
                         textView.setTextSize(textSizeOfList);
                         /*YOUR CHOICE OF COLOR*/
@@ -136,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
         TextInputLayout container2 = findViewById(R.id.msr_dur_container);
         TextInputLayout container3 = findViewById(R.id.msr_freq_container);
 
-        if (tapCounter >= 10){
-            if (tapCounter==10){
+        if (tapCounter >= 10) {
+            if (tapCounter == 10) {
                 mySnackbar.show();
             }
             ListView list = findViewById(R.id.list_messageList);
@@ -152,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
             tv6.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
             tv4.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-           // tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+            // tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et3.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
@@ -175,13 +174,13 @@ public class MainActivity extends AppCompatActivity {
             list.setBackgroundColor(Color.TRANSPARENT);
             //listText.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
-            ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages){
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages) {
 
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
-                    View view =super.getView(position, convertView, parent);
+                    View view = super.getView(position, convertView, parent);
 
-                    TextView textView=(TextView) view.findViewById(android.R.id.text1);
+                    TextView textView = view.findViewById(android.R.id.text1);
 
                     textView.setTextSize(textSizeOfList);
                     /*YOUR CHOICE OF COLOR*/
@@ -197,10 +196,9 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d("OnClick", "secretDarkmode: clicked" + tapCounter);
 
-            currentMilis = new Date();
-            Long miliNumbers = currentMilis.getTime();
-            Log.d("Test", "milis:" + miliNumbers);
-
+        currentMilis = new Date();
+        Long miliNumbers = currentMilis.getTime();
+        Log.d("Test", "milis:" + miliNumbers);
 
 
     }

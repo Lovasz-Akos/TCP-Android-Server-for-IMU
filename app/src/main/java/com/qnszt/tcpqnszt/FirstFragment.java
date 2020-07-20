@@ -30,12 +30,12 @@ public class FirstFragment extends Fragment {
         view.findViewById(R.id.btn_startMeasurement).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean nameFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementName) != null && ((TextView)MainActivity.mainActivity.findViewById(R.id.txt_measurementName)).getText().length() > 0;
-                Boolean durationFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency) != null && ((TextView)MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency)).getText().length() > 0;
-                Boolean frequencyFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency) != null && ((TextView)MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency)).getText().length() > 0;
-                if( nameFilled && durationFilled ) {
+                Boolean nameFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementName) != null && ((TextView) MainActivity.mainActivity.findViewById(R.id.txt_measurementName)).getText().length() > 0;
+                Boolean durationFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency) != null && ((TextView) MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency)).getText().length() > 0;
+                Boolean frequencyFilled = MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency) != null && ((TextView) MainActivity.mainActivity.findViewById(R.id.txt_measurementFrequency)).getText().length() > 0;
+                if (nameFilled && durationFilled) {
                     MainActivity.mainActivity.startMeasurementClicked();
-                }else{
+                } else {
                     Snackbar snackbar = Snackbar
                             .make(MainActivity.mainActivity.findViewById(R.id.layout), "Mérés neve vagy ideje nincs kitöltve!", Snackbar.LENGTH_LONG);
                     snackbar.setBackgroundTint(ContextCompat.getColor(view.getContext(), R.color.colorAlert));
