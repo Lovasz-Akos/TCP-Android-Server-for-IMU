@@ -1,6 +1,8 @@
 package com.qnszt.tcpqnszt;
 
 import android.annotation.SuppressLint;
+import android.app.StatusBarManager;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -114,29 +118,33 @@ public class MainActivity extends AppCompatActivity {
         tapCounter++;
 
         Snackbar mySnackbar = Snackbar.make(view, "Welcome to the dark side    o((>ω< ))o", 1000);
-        mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
+        mySnackbar.setBackgroundTint(Color.parseColor("#c43e00"));
         mySnackbar.setTextColor(Color.BLACK);
 
         EditText et1 = findViewById(R.id.txt_measurementFrequency);
         EditText et2 = findViewById(R.id.txt_measurementName);
-        EditText et3 = findViewById(R.id.txt_measurementFrequency);
+        EditText et3 = findViewById(R.id.txt_measurementDuration);
 
+        Button btn = findViewById(R.id.btn_startMeasurement);
         TextView tv6 = findViewById(R.id.textView6);
 
         TextView tv4 = findViewById(R.id.textView4);
         TextView tv5 = findViewById(R.id.statCounter);
         CheckBox cb1 = findViewById(R.id.chk_testerLed);
 
-        ListView list = findViewById(R.id.list_messageList);
-        View bg = findViewById(R.id.bg);
-        //TextView listText = list.findViewById(R.id.list_messageList);
+        TextInputLayout container1 = findViewById(R.id.msr_name_container);
+        TextInputLayout container2 = findViewById(R.id.msr_dur_container);
+        TextInputLayout container3 = findViewById(R.id.msr_freq_container);
 
+        if (tapCounter >= 10){
+            if (tapCounter==10){
+                mySnackbar.show();
+            }
+            ListView list = findViewById(R.id.list_messageList);
+            View bg = findViewById(R.id.bg);
+            //TextView listText = list.findViewById(R.id.list_messageList);
 
-        if (tapCounter == 10){
-            mySnackbar.show();
-        }
-        if (tapCounter >= 10) {
-
+            bg.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
 
             findViewById(R.id.btn_startMeasurement).setBackgroundColor(getResources().getColor(R.color.colorAccent_DarkTheme));
             cb1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
@@ -148,9 +156,22 @@ public class MainActivity extends AppCompatActivity {
             et1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             et3.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
+            //<+item name="android:windowLightStatusBar">false</item>
 
-            bg.setBackgroundColor(getResources().getColor(R.color.colorBackground_DarkTheme));
 
+            container1.setHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+            container2.setHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+            container3.setHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+
+            container1.setBoxStrokeColor(getResources().getColor(R.color.colorAccent_DarkTheme));
+            container2.setBoxStrokeColor(getResources().getColor(R.color.colorAccent_DarkTheme));
+            container3.setBoxStrokeColor(getResources().getColor(R.color.colorAccent_DarkTheme));
+
+            container1.setDefaultHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+            container2.setDefaultHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+            container3.setDefaultHintTextColor(ColorStateList.valueOf(getResources().getColor(R.color.colorMainText_DarkTheme)));
+
+            container1.setBoxBackgroundColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             list.setBackgroundColor(Color.TRANSPARENT);
             //listText.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
@@ -171,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
             /*SET THE ADAPTER TO LISTVIEW*/
             list.setAdapter(adapter);
+            list.deferNotifyDataSetChanged();
 
         }
         Log.d("OnClick", "secretDarkmode: clicked" + tapCounter);
