@@ -18,4 +18,7 @@
     <string name="status">Státusz:</string>
     <string name="minutes">perc</string>
     <string name="hertz" translatable="false">Hz</string>
+    <string name="teszt_led">Teszt LED</string>
+    <string name="kliens_csatlakozva">kliens csatlakozva</string>
+    <string name="_0">0</string>
 </resources>

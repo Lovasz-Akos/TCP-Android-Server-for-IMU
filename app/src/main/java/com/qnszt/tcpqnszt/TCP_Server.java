@@ -150,8 +150,6 @@ public class TCP_Server {
                 }
             }
         }
-
-
     }
 
     class updateUIThread implements Runnable {

@@ -12,95 +12,97 @@
         android:id="@+id/textTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
+        android:layout_marginTop="16dp"
         android:text="@string/measurement_name"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementName"
-        app:layout_constraintEnd_toStartOf="@+id/txt_measurementName"
-        app:layout_constraintTop_toTopOf="@+id/txt_measurementName" />
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txt_measurementName"
-        android:layout_width="160dp"
-        android:layout_height="41dp"
-        android:layout_margin="20dp"
-        android:layout_span="2"
+        android:layout_marginHorizontal="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/colorMainText"
         android:textColorHint="@color/colorAccent2"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textTest" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
+        android:layout_marginTop="8dp"
         android:text="@string/measurement_duration"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementDuration"
-        app:layout_constraintEnd_toStartOf="@+id/txt_measurementDuration"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
+        android:layout_marginTop="8dp"
         android:text="@string/measurement_frequency"
         android:textAlignment="textEnd"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_measurementFrequency"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="17sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_measurementFrequency"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
 
     <Button
         android:id="@+id/btn_startMeasurement"
-        android:layout_width="113dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_span="1"
+        android:layout_marginTop="10dp"
         android:text="@string/measurement_start"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/statCounter" />
 
     <EditText
         android:id="@+id/txt_measurementDuration"
-        android:layout_width="160dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="number"
         android:textAlignment="center"
         android:textColor="@color/colorMainText"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/txt_measurementName"
-        app:layout_constraintTop_toBottomOf="@+id/txt_measurementName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <CheckBox
         android:id="@+id/chk_testerLed"
-        android:layout_width="129dp"
-        android:layout_height="46dp"
-
-        android:layout_marginTop="4dp"
-        android:scaleX="1.4"
-        android:scaleY="1.4"
-        android:text="@string/measurement_testled"
+        android:text="Teszt LED"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:textColor="@color/colorMainText"
-        android:textSize="14sp"
+
+        android:textSize="18sp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.599"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_startMeasurement" />
 
@@ -108,26 +110,23 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:scaleX="1.2"
         android:text="@string/status"
-android:layout_margin="10dp"
         android:textAlignment="textStart"
         android:textColor="@color/colorMainText"
-        app:layout_constraintEnd_toStartOf="@+id/statCounter"
+        android:textSize="18sp"
 
-        app:layout_constraintTop_toBottomOf="@+id/txt_measurementFrequency" />
+        app:layout_constraintBottom_toBottomOf="@+id/statCounter"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toTopOf="@+id/statCounter" />
 
     <ListView
         android:id="@+id/list_messageList"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
-        android:clipToPadding="false"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
+        android:layout_marginTop="2dp"
         android:textColor="@color/colorMainText"
-        app:layout_constraintBottom_toTopOf="@+id/secretBtn"
+        android:layout_marginHorizontal="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chk_testerLed">
@@ -139,32 +138,31 @@ android:layout_margin="10dp"
         android:id="@+id/statCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:text="0"
+        android:layout_marginTop="8dp"
+        android:text="@string/_0"
+        android:textSize="18sp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/txt_measurementFrequency" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:scaleX="1.2"
-        android:scaleY="1.2"
-        android:text="kliens csatlakozva"
+        android:text="@string/kliens_csatlakozva"
+        android:textSize="18sp"
+        android:layout_marginStart="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/statCounter"
         app:layout_constraintStart_toEndOf="@+id/statCounter"
-        app:layout_constraintTop_toBottomOf="@+id/txt_measurementFrequency" />
+        app:layout_constraintTop_toTopOf="@+id/statCounter" />
 
     <Button
         android:id="@+id/secretBtn"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="66dp"
-        android:layout_height="60dp"
+        android:layout_height="66dp"
         android:alpha="0"
         android:backgroundTint="#FFFFFF"
         android:backgroundTintMode="src_in"
@@ -172,17 +170,18 @@ android:layout_margin="10dp"
         android:shadowRadius="0"
         android:text=""
         android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txt_measurementFrequency"
-        android:layout_width="160dp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="50dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="number"
         android:textAlignment="center"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/txt_measurementDuration"
-        app:layout_constraintTop_toBottomOf="@+id/txt_measurementDuration" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

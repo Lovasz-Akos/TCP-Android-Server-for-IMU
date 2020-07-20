@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static Measurement measurement = new Measurement();
     public static MainActivity mainActivity;
+    private static int textSizeOfList = 18;
     private static Handler handler = new Handler();
     private static int tapCounter = 0;
     List<String> messages = new ArrayList<String>();
@@ -82,18 +83,36 @@ public class MainActivity extends AppCompatActivity {
 
         msg = StringUtils.strip(msg, "<>");
 
+
         if (msg != null && !msg.equals("null") && !msg.equals("") && !StringUtils.strip(msg, " ").equals("") && !msg.isEmpty()) {
             messages.add(0, formazottDatum + " | " + msg);
 
             if (tapCounter >= 10) {
                 secretDarkmode(this.findViewById(R.id.secretBtn));
             } else {
-                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages);
+                ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, messages){
+                    @Override
+                    public View getView(int position, View convertView, ViewGroup parent) {
+                        View view =super.getView(position, convertView, parent);
+
+                        TextView textView=(TextView) view.findViewById(android.R.id.text1);
+
+                        textView.setTextSize(textSizeOfList);
+                        /*YOUR CHOICE OF COLOR*/
+                        textView.setTextColor(Color.BLACK);
+                        return view;
+                    }
+                };
+
+
                 msgList.setAdapter(adapter);
                 msgList.deferNotifyDataSetChanged();
+
             }
+
             ClientConnected();
         }
+
     }
 
     public void secretDarkmode(View view) {
@@ -154,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
                     TextView textView=(TextView) view.findViewById(android.R.id.text1);
 
+                    textView.setTextSize(textSizeOfList);
                     /*YOUR CHOICE OF COLOR*/
                     textView.setTextColor(Color.WHITE);
                     return view;
