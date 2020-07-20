@@ -44,6 +44,7 @@
             android:id="@+id/txt_measurementDuration"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="number"
             android:hint="Mérés időtartama (Perc)" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +64,7 @@
             android:id="@+id/txt_measurementFrequency"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="number"
             android:hint="Mérési frekvencia (Hz)" />
     </com.google.android.material.textfield.TextInputLayout>
 
