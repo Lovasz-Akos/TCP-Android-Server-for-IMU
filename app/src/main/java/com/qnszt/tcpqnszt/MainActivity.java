@@ -4,23 +4,18 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.view.menu.ListMenuItemView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -64,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
         measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
-        measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
+        measurement.setDuration(((TextView) findViewById(R.id.txt_measurementFrequency)).getText().toString());
         measurement.setDelay(((TextView) findViewById(R.id.txt_measurementFrequency)).getText().toString());
         MainActivity.measurement = measurement;
         ClientWorker.startMeasurement(measurement);
@@ -122,14 +117,11 @@ public class MainActivity extends AppCompatActivity {
         mySnackbar.setBackgroundTint(Color.parseColor("#44ffbb"));
         mySnackbar.setTextColor(Color.BLACK);
 
-        EditText et1 = findViewById(R.id.txt_measurementDuration);
+        EditText et1 = findViewById(R.id.txt_measurementFrequency);
         EditText et2 = findViewById(R.id.txt_measurementName);
         EditText et3 = findViewById(R.id.txt_measurementFrequency);
 
         TextView tv6 = findViewById(R.id.textView6);
-        TextView tv2 = findViewById(R.id.textView2);
-        TextView tv3 = findViewById(R.id.textView3);
-        TextView tv0 = findViewById(R.id.textTest);
 
         TextView tv4 = findViewById(R.id.textView4);
         TextView tv5 = findViewById(R.id.statCounter);
@@ -150,9 +142,6 @@ public class MainActivity extends AppCompatActivity {
             cb1.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv5.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
             tv6.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            tv2.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            tv3.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
-            tv0.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
 
             tv4.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));
            // tv11.setTextColor(getResources().getColor(R.color.colorMainText_DarkTheme));

@@ -17,4 +17,7 @@
     <string name="waiting">Várakozás...</string>
     <string name="status">Státusz:</string>
     <string name="minutes">perc</string>
+    <string name="teszt_led">Teszt LED</string>
+    <string name="kliens_csatlakozva">Kliens csatlakozva</string>
+    <string name="_0">0</string>
 </resources>

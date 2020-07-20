@@ -11,14 +11,14 @@
     <string name="measurement_frequency_50hz">50Hz</string>
     <string name="measurement_frequency_100hz">100Hz</string>
     <string name="measurement_start">Indítás</string>
-    <string name="measurement_testled">Teszt LED</string>
-    <string name="dark_mode">Sötét Téma</string>
-    <string name="message_list">Üzenetek</string>
+    <string name="measurement_testled">Test LED</string>
+    <string name="dark_mode">Dark Theme</string>
+    <string name="message_list">Messages</string>
     <string name="waiting">Várakozás...</string>
     <string name="status">Státusz:</string>
-    <string name="minutes">perc</string>
+    <string name="minutes">minutes</string>
     <string name="hertz" translatable="false">Hz</string>
-    <string name="teszt_led">Teszt LED</string>
-    <string name="kliens_csatlakozva">kliens csatlakozva</string>
+    <string name="teszt_led">Test LED</string>
+    <string name="kliens_csatlakozva">Client connected</string>
     <string name="_0">0</string>
 </resources>
