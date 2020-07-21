@@ -1,7 +1,9 @@
 package com.qnszt.tcpqnszt;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> messages = new ArrayList<String>();
 
     StopWatch watch = new StopWatch();
+    View view;
 
 
     Date currentMilis;
@@ -119,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 */
                 break;
         }
-
+    }
 
         public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
@@ -130,12 +134,37 @@ public class MainActivity extends AppCompatActivity {
         ClientWorker.startMeasurement(measurement);
     }
 
+    // Get a MemoryInfo object for the device's current memory status.
+    private ActivityManager.MemoryInfo getAvailableMemory() {
+        ActivityManager activityManager = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo;
+    }
+
+
     public void listIncomingMessages(String msg) {
 
+        Log.d("listsize", "listIncomingMessages: " + messages.size());
+
+        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
+
+        if (memoryInfo.lowMemory) {
+                Context context = getApplicationContext();
+                CharSequence text = "System requested the app releases some memory, removing messages older than the last 10";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            for (int i = messages.size()-1; i >= 10; i--) {
+
+                messages.remove(i);
+            }
+        }
+
+
         ListView msgList = findViewById(R.id.list_messageList);
-
         Calendar i = Calendar.getInstance();
-
         i.add(Calendar.DATE, 1);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
 
