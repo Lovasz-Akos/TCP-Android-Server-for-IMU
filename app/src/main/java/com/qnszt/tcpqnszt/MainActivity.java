@@ -1,6 +1,9 @@
 package com.qnszt.tcpqnszt;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> messages = new ArrayList<String>();
 
     StopWatch watch = new StopWatch();
+    View view;
 
 
     Date currentMilis;
@@ -64,8 +69,63 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void onTrimMemory(int level) {
 
-    public void startMeasurementClicked() {
+        // Determine which lifecycle or system event was raised.
+        switch (level) {
+
+            case ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN:
+
+                /*
+                   Release any UI objects that currently hold memory.
+
+                   The user interface has moved to the background.
+                */
+
+                break;
+
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_MODERATE:
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW:
+            case ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL:
+
+                /*
+                   Release any memory that your app doesn't need to run.
+
+                   The device is running low on memory while the app is running.
+                   The event raised indicates the severity of the memory-related event.
+                   If the event is TRIM_MEMORY_RUNNING_CRITICAL, then the system will
+                   begin killing background processes.
+                */
+
+                break;
+
+            case ComponentCallbacks2.TRIM_MEMORY_BACKGROUND:
+            case ComponentCallbacks2.TRIM_MEMORY_MODERATE:
+            case ComponentCallbacks2.TRIM_MEMORY_COMPLETE:
+
+                /*
+                   Release as much memory as the process can.
+
+                   The app is on the LRU list and the system is running low on memory.
+                   The event raised indicates where the app sits within the LRU list.
+                   If the event is TRIM_MEMORY_COMPLETE, the process will be one of
+                   the first to be terminated.
+                */
+
+                break;
+
+            default:
+                /*
+                  Release any non-critical data structures.
+
+                  The app received an unrecognized memory level value
+                  from the system. Treat this as a generic low-memory message.
+                */
+                break;
+        }
+    }
+
+        public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
         measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
         measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
@@ -74,12 +134,37 @@ public class MainActivity extends AppCompatActivity {
         ClientWorker.startMeasurement(measurement);
     }
 
+    // Get a MemoryInfo object for the device's current memory status.
+    private ActivityManager.MemoryInfo getAvailableMemory() {
+        ActivityManager activityManager = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        return memoryInfo;
+    }
+
+
     public void listIncomingMessages(String msg) {
 
+        Log.d("listsize", "listIncomingMessages: " + messages.size());
+
+        ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
+
+        if (memoryInfo.lowMemory) {
+                Context context = getApplicationContext();
+                CharSequence text = "System requested the app releases some memory, removing messages older than the last 10";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            for (int i = messages.size()-1; i >= 10; i--) {
+
+                messages.remove(i);
+            }
+        }
+
+
         ListView msgList = findViewById(R.id.list_messageList);
-
         Calendar i = Calendar.getInstance();
-
         i.add(Calendar.DATE, 1);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat format1 = new SimpleDateFormat("HH:mm:ss");
 
