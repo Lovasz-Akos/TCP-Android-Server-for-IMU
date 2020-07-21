@@ -24,8 +24,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.StopWatch;
 
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
     private static Handler handler = new Handler();
     private static int tapCounter = 0;
     List<String> messages = new ArrayList<String>();
+
+    StopWatch watch = new StopWatch();
+
 
     Date currentMilis;
 
@@ -62,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
         measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
-        measurement.setDuration(((TextView) findViewById(R.id.txt_measurementFrequency)).getText().toString());
+        measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
         measurement.setDelay(((TextView) findViewById(R.id.txt_measurementFrequency)).getText().toString());
         MainActivity.measurement = measurement;
         ClientWorker.startMeasurement(measurement);
