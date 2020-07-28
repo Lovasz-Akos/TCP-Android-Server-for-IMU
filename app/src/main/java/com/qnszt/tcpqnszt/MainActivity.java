@@ -69,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
     public void onTrimMemory(int level) {
 
         // Determine which lifecycle or system event was raised.
@@ -121,6 +123,18 @@ public class MainActivity extends AppCompatActivity {
                   The app received an unrecognized memory level value
                   from the system. Treat this as a generic low-memory message.
                 */
+
+                Context context = getApplicationContext();
+                CharSequence text = "System requested the app releases some memory, removing messages older than the last 10";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                for (int i = messages.size()-1; i >= 10; i--) {
+
+                    messages.remove(i);
+                }
                 break;
         }
     }
