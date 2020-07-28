@@ -28,11 +28,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.StopWatch;
 
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,11 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private static Handler handler = new Handler();
     private static int tapCounter = 0;
     List<String> messages = new ArrayList<String>();
-
-    StopWatch watch = new StopWatch();
-    View view;
-
-
     Date currentMilis;
 
     @Override
@@ -59,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //theButton.setVisibility(View.VISIBLE);
-        //theButton.setBackgroundColor(Color.TRANSPARENT);
 
         TCP_Server.SERVERPORT = 1883;
         new TCP_Server().server_start();
@@ -131,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
-                for (int i = messages.size()-1; i >= 10; i--) {
+                for (int i = messages.size() - 1; i >= 10; i--) {
 
                     messages.remove(i);
                 }
@@ -139,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-        public void startMeasurementClicked() {
+    public void startMeasurementClicked() {
         Measurement measurement = new Measurement();
         measurement.setName(((TextView) findViewById(R.id.txt_measurementName)).getText().toString());
         measurement.setDuration(((TextView) findViewById(R.id.txt_measurementDuration)).getText().toString());
@@ -164,13 +153,13 @@ public class MainActivity extends AppCompatActivity {
         ActivityManager.MemoryInfo memoryInfo = getAvailableMemory();
 
         if (memoryInfo.lowMemory) {
-                Context context = getApplicationContext();
-                CharSequence text = "System requested the app releases some memory, removing messages older than the last 10";
-                int duration = Toast.LENGTH_SHORT;
+            Context context = getApplicationContext();
+            CharSequence text = "System requested the app releases some memory, removing messages older than the last 10";
+            int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            for (int i = messages.size()-1; i >= 10; i--) {
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            for (int i = messages.size() - 1; i >= 10; i--) {
 
                 messages.remove(i);
             }
@@ -304,7 +293,6 @@ public class MainActivity extends AppCompatActivity {
         currentMilis = new Date();
         Long miliNumbers = currentMilis.getTime();
         Log.d("Test", "milis:" + miliNumbers);
-
 
     }
 
