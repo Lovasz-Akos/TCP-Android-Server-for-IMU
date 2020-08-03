@@ -4,11 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:icon="@mipmap/horse_icon"
+        android:roundIcon="@mipmap/horse_icon_round"
+
         android:theme="@style/AppTheme">
+
+
+
         <activity
             android:name="com.qnszt.tcpqnszt.MainActivity"
             android:configChanges="orientation|keyboardHidden"
