@@ -1,5 +1,6 @@
 package com.qnszt.tcpqnszt;
 
+import android.app.admin.DelegatedAdminReceiver;
 import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +30,7 @@ public class TCP_Server {
     Thread serverThread = null;
     private ServerSocket serverSocket;
     private TextView text;
+    Date time = new Date();
 
     public void server_start() {
 
@@ -126,7 +129,6 @@ public class TCP_Server {
                         if (find != null) {
                             if (find.contains("-CONNECTED")) {
                                 ClientWorker.registerClient(find.substring(0, find.indexOf('-')), input, output);
-
                             } else if (find.contains("-DISCONNECTED")) {
                                 ClientWorker.removeClient(find.substring(0, find.indexOf('-')));
                             }

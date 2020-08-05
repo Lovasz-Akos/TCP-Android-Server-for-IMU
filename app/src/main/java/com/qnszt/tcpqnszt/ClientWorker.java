@@ -20,6 +20,7 @@ public class ClientWorker {
         clients.add(temp_client);
         Log.d("RUN", String.format("Registered: %s", name));
         send(temp_client, "OK");
+        send(temp_client, "NOW" + milis.getTime());
     }
 
     public static void resetClients() {
