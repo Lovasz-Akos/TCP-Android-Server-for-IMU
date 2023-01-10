@@ -1,4 +1,4 @@
-TCP Android Client
+# TCP Android Client
 
 We created an Android app that contains a TCP Server for sending out messages to arduino gadgets that gather data. 
 It can log the connected users, recieve messages and generally handles many users at once.
